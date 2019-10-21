@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Route } from "react-router-dom";
 
 // STATE MANAGEMENT
 
@@ -22,6 +23,9 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <Counter />
+        <NavBar />
+        <Route path="/home" component={Container} />
+        <Route path="/" component={Login} />
       </Provider>
     </div>
   );
