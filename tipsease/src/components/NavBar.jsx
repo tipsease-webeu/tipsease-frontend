@@ -5,8 +5,8 @@ export default function NavBar() {
     return (
         <div>
             Tipsease
-            <NavLink to='/home'>Home</Link>
-            <NavLink to='/profile'></NavLink>
+            <NavLink to='/home'>Home</NavLink>
+            <NavLink to='/profile'>Profile</NavLink>
             <button>Logout</button>
         </div>
     )

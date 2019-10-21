@@ -10,7 +10,8 @@ import { Provider } from "react-redux";
 
 // COMPONENTS
 
-import Counter from "./components/Counter";
+import NavBar from "./components/NavBar";
+import Login from './components/Login';
 
 const masterReducer = combineReducers({
   count: reducers.countReducer
@@ -23,9 +24,9 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <NavBar />
-        <Route path="/home" component={Container} />
+        {/* <Route path="/home" component={Container} /> */}
         <Route path="/" component={Login} />
-        <Route path='/profile' component={Profile} />
+        {/* <Route path='/profile' component={Profile} /> */}
       </Provider>
     </div>
   );
