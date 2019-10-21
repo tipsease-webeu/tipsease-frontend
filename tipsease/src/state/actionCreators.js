@@ -11,3 +11,9 @@ export function decrement() {
     type: types.DECREMENT
   };
 }
+
+export function reset() {
+  return {
+    type: types.RESET
+  };
+}

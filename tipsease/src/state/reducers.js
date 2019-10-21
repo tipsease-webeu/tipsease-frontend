@@ -8,6 +8,8 @@ export function countReducer(count = initialCount, action) {
       return count + 1;
     case types.DECREMENT:
       return count - 1;
+    case types.RESET:
+      return 0;
     default:
       return count;
   }
