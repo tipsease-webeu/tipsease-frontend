@@ -11,3 +11,10 @@ export function decrement() {
     type: types.DECREMENT
   };
 }
+
+export function getCurrentUser(currentUser) {
+  return {
+    type: types.ADD_CURRENT_USER,
+    payload: currentUser,
+  }
+}

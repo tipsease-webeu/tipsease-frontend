@@ -12,3 +12,14 @@ export function countReducer(count = initialCount, action) {
       return count;
   }
 }
+
+const initialUser = {};
+
+export function currentUserReducer(currentUser = initialUser, action) {
+  switch (action.type) {
+    case types.ADD_CURRENT_USER:
+      return action.payload;
+    default:
+      return currentUser;
+  }
+}

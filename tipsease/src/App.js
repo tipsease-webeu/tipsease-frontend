@@ -11,13 +11,17 @@ import { Provider } from "react-redux";
 // COMPONENTS
 
 import NavBar from "./components/NavBar";
-import Login from './components/Login';
+import Login from "./components/Login";
 
 const masterReducer = combineReducers({
-  count: reducers.countReducer
+  count: reducers.countReducer,
+  currentUser: reducers.currentUserReducer
 });
 
-const store = createStore(masterReducer);
+const store = createStore(
+  masterReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 function App() {
   return (
