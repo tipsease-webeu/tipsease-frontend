@@ -26,6 +26,7 @@ function App() {
         <NavBar />
         <Route path="/home" component={Container} />
         <Route path="/" component={Login} />
+        <Route path='/profile' component={Profile} />
       </Provider>
     </div>
   );
