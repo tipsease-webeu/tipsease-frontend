@@ -5,22 +5,28 @@ import { Route } from "react-router-dom";
 // STATE MANAGEMENT
 
 import * as reducers from "./state/reducers";
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
 // COMPONENTS
 
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
+import Container from "./components/Container";
 
 const masterReducer = combineReducers({
   count: reducers.countReducer,
-  currentUser: reducers.currentUserReducer
+  currentUser: reducers.currentUserReducer,
+  listServiceWorkers: reducers.listServiceWorkersReducer,
 });
 
 const store = createStore(
   masterReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
 
 function App() {
@@ -28,8 +34,8 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <NavBar />
-        {/* <Route path="/home" component={Container} /> */}
-        <Route path="/" component={Login} />
+        <Route path="/home" component={Container} />
+        <Route exact path="/" component={Login} />
         {/* <Route path='/profile' component={Profile} /> */}
       </Provider>
     </div>

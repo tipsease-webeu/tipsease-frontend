@@ -23,3 +23,17 @@ export function currentUserReducer(currentUser = initialUser, action) {
       return currentUser;
   }
 }
+
+const initialListServiceWorkers = [];
+
+export function listServiceWorkersReducer(
+  listServiceWorkers = initialListServiceWorkers,
+  action
+) {
+  switch (action.type) {
+    case types.ADD_SERVICE_WORKERS:
+      return action.payload;
+    default:
+      return listServiceWorkers;
+  }
+}

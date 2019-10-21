@@ -1,3 +1,4 @@
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const ADD_CURRENT_USER = 'ADD_CURRENT_USER';
+export const ADD_SERVICE_WORKERS = 'ADD_SERVICE_WORKERS';
