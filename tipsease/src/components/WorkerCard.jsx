@@ -1,22 +1,59 @@
 import React from "react";
+import { Formik, Form, Field } from "formik";
 
-export default function WorkerCard({ worker }) {
-  const addDefaultSrc = e => {
-    e.target.src =
-      "http://saltlifetherapy.ie/wp-content/uploads/2018/11/no-photo-1.png";
-  };
+// STATE
+
+import { connect } from "react-redux";
+import * as actionCreators from "../state/actionCreators";
+
+// HELPERS
+
+import { addDefaultSrc } from "../helpers/helpers";
+
+const initialValueTip = 0;
+
+function WorkerCard({ currentUser, listServiceWorkers, match, onSubmitTip }) {
+  const selectedWorker = listServiceWorkers.find(worker => {
+    return worker.id === Number(match.params.id);
+  });
+
   return (
     <div>
-      <h1>{worker.fullName}</h1>
       <div>
-        <img src={worker.photoUrl} onError={addDefaultSrc} alt="profile-pic" />
+        <h1>{selectedWorker.fullName}</h1>
+        <div>
+          <img
+            src={selectedWorker.photoUrl}
+            onError={addDefaultSrc}
+            alt="profile-pic"
+          />
+        </div>
+        <div>
+          <p>Workplace: {selectedWorker.workplace}</p>
+          <p>Rating: {selectedWorker.rating}</p>
+          <p># of ratings: {selectedWorker.numOfRatings}</p>
+        </div>
       </div>
-      <div>
-        <p>Workplace: {worker.workplace}</p>
-        <p>Rating: {worker.rating}</p>
-        <p># of ratings: {worker.numOfRatings}</p>
-      </div>
-      <button>Tip</button>
+      <Formik
+        initialValues={initialValueTip}
+        onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+        render={props => {
+          return (
+            <Form>
+              <label>
+                Input amount in EUR:
+                <Field name="amount" type="number" />
+              </label>
+              <button>Tip</button>
+            </Form>
+          );
+        }}
+      />
     </div>
   );
 }
+
+export default connect(
+  state => state,
+  actionCreators
+)(WorkerCard);

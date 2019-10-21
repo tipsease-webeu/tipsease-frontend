@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 // COMPONENTS
 
-import WorkerCard from './WorkerCard';
+import WorkerCard from './WorkerListItem';
 
 // STATE
 

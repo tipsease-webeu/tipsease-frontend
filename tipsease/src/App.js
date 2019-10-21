@@ -14,11 +14,12 @@ import thunk from "redux-thunk";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Container from "./components/Container";
+import WorkerCard from "./components/WorkerCard";
 
 const masterReducer = combineReducers({
   count: reducers.countReducer,
   currentUser: reducers.currentUserReducer,
-  listServiceWorkers: reducers.listServiceWorkersReducer,
+  listServiceWorkers: reducers.listServiceWorkersReducer
 });
 
 const store = createStore(
@@ -34,8 +35,9 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <NavBar />
-        <Route path="/home" component={Container} />
         <Route exact path="/" component={Login} />
+        <Route path="/home" component={Container} />
+        <Route path="/service-worker/:id" component={WorkerCard} />
         {/* <Route path='/profile' component={Profile} /> */}
       </Provider>
     </div>
