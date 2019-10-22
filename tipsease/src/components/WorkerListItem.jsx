@@ -21,6 +21,7 @@ export default function WorkerCard({ worker }) {
           <p>Workplace: {worker.workplace}</p>
           <p>Rating: {worker.rating}</p>
           <p># of ratings: {worker.numOfRatings}</p>
+          <p>Balance: {worker.accountBalance}</p>
         </div>
       </div>
     </Link>
