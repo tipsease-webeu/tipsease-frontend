@@ -46,7 +46,7 @@ function Registration({getCurrentUser, history}) {
               <Field name="fullname" type="text" />
             </label>
             <label>
-              password:
+              Password:
               <Field name="password" type="password" />
             </label>
             <label>
