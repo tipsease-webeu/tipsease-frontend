@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Redirect } from "react-router-dom";
 
 // STATE MANAGEMENT
 
@@ -15,7 +15,7 @@ import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Container from "./components/Container";
 import WorkerCard from "./components/WorkerCard";
-import Registration from "./components/Registration";
+import Profile from "./components/Profile";
 
 const masterReducer = combineReducers({
   count: reducers.countReducer,
@@ -32,25 +32,31 @@ const store = createStore(
 );
 
 function App(props) {
-  // LOGOUT FUNCTIONALITY
-
-  const logout = e => {
-    localStorage.clear();
-    props.history.replace('/');
-  };
-
   return (
     <div className="App">
       <Provider store={store}>
-        <NavBar logout={logout} />
+        <NavBar />
         <Route exact path="/" component={Login} />
-        <Route path="/home" component={Container} />
-        <Route path="/register" component={Registration} />
+        <PrivateRoute path="/home" component={Container} />
+        <PrivateRoute path="/profile" component={Profile} />
         <Route path="/service-worker/:id" component={WorkerCard} />
         {/* <Route path='/profile' component={Profile} /> */}
       </Provider>
     </div>
   );
 }
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("authorization") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/" />
+      )
+    }
+  />
+);
 
 export default withRouter(App);
