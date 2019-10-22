@@ -18,11 +18,11 @@ function Profile({ currentUser, onEditProfile, history }) {
       const { password, ...newValues } = values;
       onEditProfile(newValues, currentUser.id);
     } else {
-      const { newValues } = values;
+      const { ...newValues } = values;
       onEditProfile(newValues, currentUser.id);
     }
     actions.resetForm();
-    history.push("/home");
+    history.push('/home');
   };
 
   return (
