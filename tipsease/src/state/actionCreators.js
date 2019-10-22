@@ -112,6 +112,7 @@ export const onEditProfile = (values, id) => dispatch => {
   withAuth()
     .put(`${userEndpoint}/${id}`, values)
     .then(res => {
+      debugger
       dispatch(fetchCurrentUser(id));
     })
     .catch(error => {

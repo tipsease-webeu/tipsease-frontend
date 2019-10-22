@@ -6,7 +6,7 @@ import { Formik, Form, Field } from "formik";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function Profile({ currentUser, onEditProfile }) {
+function Profile({ currentUser, onEditProfile, history }) {
   const initialValuesProfile = {
     fullName: currentUser.fullName,
     username: currentUser.username,
@@ -14,22 +14,16 @@ function Profile({ currentUser, onEditProfile }) {
   };
 
   const onSubmitEditProfile = (values, actions) => {
-    actions.resetForm();
-    let newValues = {};
     if (values.password === "") {
-        newValues = {
-            fullName: values.fullName,
-            username: values.username,
-        }
+      const { password, ...newValues } = values;
+      onEditProfile(newValues, currentUser.id);
     } else {
-        newValues = {
-            fullName: values.fullName,
-            username: values.username,
-            password: values.password,
-        }
+      const { newValues } = values;
+      onEditProfile(newValues, currentUser.id);
     }
-    onEditProfile(newValues, currentUser.id);
-  }
+    actions.resetForm();
+    history.push("/home");
+  };
 
   return (
     <Formik
