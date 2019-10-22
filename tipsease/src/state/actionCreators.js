@@ -37,7 +37,7 @@ export const fetchServiceWorkers = () => dispatch => {
       dispatch(getServiceWorkers(res.data));
     })
     .catch(error => {
-      debugger;
+      alert(error.message);
     });
 };
 
@@ -48,7 +48,6 @@ export const fetchServiceWorkers = () => dispatch => {
 // }
 
 export const addTip = serviceWorker => {
-  debugger
   return {
     type: types.ADD_TIP,
     payload: serviceWorker
@@ -59,28 +58,26 @@ export const addTip = serviceWorker => {
 const fetchServiceWorker = id => dispatch => {
   withAuth().get(`https://build-tipsease.herokuapp.com/serviceWorkers/${id}`)
   .then(res => {
-    debugger
     dispatch(addTip(res.data))
   })
-  .catch(res => {
-    debugger
+  .catch(error => {
+    alert(error.message)
   })
 }
 
 const tipServiceWorkersApi =
   "https://build-tipsease.herokuapp.com/serviceWorkers/pay";
 
-export const onSubmitTip = (values, actions, id, userName) => dispatch => {
+export const onSubmitTip = (values, id, userName) => dispatch => {
   withAuth()
     .put(`${tipServiceWorkersApi}/${id}`, {
       payment: values.amount,
       senderUsername: userName
     })
     .then(res => {
-      debugger;
       dispatch(fetchServiceWorker(id))
     })
     .catch(error => {
-      debugger;
+      alert(error.message);
     });
 };
