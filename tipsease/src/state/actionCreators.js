@@ -81,3 +81,9 @@ export const onSubmitTip = (amount, id, userName) => dispatch => {
       alert(error.message);
     });
 };
+
+export const clearCurrentUser = () => {
+  return {
+    type: types.CLEAR_CURRENT_USER,
+  }
+}
