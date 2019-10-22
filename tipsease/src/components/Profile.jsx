@@ -15,7 +15,20 @@ function Profile({ currentUser, onEditProfile }) {
 
   const onSubmitEditProfile = (values, actions) => {
     actions.resetForm();
-    onEditProfile(values, currentUser.id);
+    let newValues = {};
+    if (values.password === "") {
+        newValues = {
+            fullName: values.fullName,
+            username: values.username,
+        }
+    } else {
+        newValues = {
+            fullName: values.fullName,
+            username: values.username,
+            password: values.password,
+        }
+    }
+    onEditProfile(newValues, currentUser.id);
   }
 
   return (

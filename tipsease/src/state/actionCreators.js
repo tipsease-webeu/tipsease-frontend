@@ -82,28 +82,39 @@ export const onSubmitTip = (amount, id, userName) => dispatch => {
     });
 };
 
-const editCurrentUser = () => {
+export const clearCurrentUser = currentUser => {
   return {
-    action: types.EDIT_CURRENT_USER,
-  }
-}
-
-export const clearCurrentUser = () => {
+    type: types.CLEAR_CURRENT_USER,
+    payload: currentUser
+  };
+};
+const editCurrentUser = currentUser => {
   return {
-    type: types.CLEAR_CURRENT_USER
+    type: types.EDIT_CURRENT_USER,
+    payload: currentUser
   };
 };
 
 const userEndpoint = "https://build-tipsease.herokuapp.com/users";
 
+export const fetchCurrentUser = id => dispatch => {
+  withAuth()
+    .get(`${userEndpoint}/${id}`)
+    .then(res => {
+      dispatch(editCurrentUser(res.data));
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+};
+
 export const onEditProfile = (values, id) => dispatch => {
-  debugger;
   withAuth()
     .put(`${userEndpoint}/${id}`, values)
     .then(res => {
-      debugger;
+      dispatch(fetchCurrentUser(id));
     })
     .catch(error => {
-      debugger;
+      alert(error.message);
     });
 };
