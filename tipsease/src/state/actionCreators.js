@@ -70,7 +70,7 @@ const fetchServiceWorker = id => dispatch => {
 const tipServiceWorkersApi =
   "https://build-tipsease.herokuapp.com/serviceWorkers/pay";
 
-export const onSubmitTip = (values, id, userName) => dispatch => {
+export const onSubmitTip = (values, actions, id, userName) => dispatch => {
   withAuth()
     .put(`${tipServiceWorkersApi}/${id}`, {
       payment: values.amount,
