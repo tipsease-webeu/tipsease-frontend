@@ -20,3 +20,14 @@
 .App-link {
   color: #09d3ac;
 }
+
+.registration-form{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.registration-form button{
+  width: 50px;
+  margin: auto;
+}
