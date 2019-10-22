@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 
 // STATE MANAGEMENT
 
@@ -30,11 +30,18 @@ const store = createStore(
   )
 );
 
-function App() {
+function App(props) {
+  // LOGOUT FUNCTIONALITY
+
+  const logout = e => {
+    localStorage.clear();
+    props.history.replace('/');
+  };
+
   return (
     <div className="App">
       <Provider store={store}>
-        <NavBar />
+        <NavBar logout={logout} />
         <Route exact path="/" component={Login} />
         <Route path="/home" component={Container} />
         <Route path="/service-worker/:id" component={WorkerCard} />
@@ -44,4 +51,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);
