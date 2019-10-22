@@ -82,8 +82,28 @@ export const onSubmitTip = (amount, id, userName) => dispatch => {
     });
 };
 
+const editCurrentUser = () => {
+  return {
+    action: types.EDIT_CURRENT_USER,
+  }
+}
+
 export const clearCurrentUser = () => {
   return {
     type: types.CLEAR_CURRENT_USER
   };
+};
+
+const userEndpoint = "https://build-tipsease.herokuapp.com/users";
+
+export const onEditProfile = (values, id) => dispatch => {
+  debugger;
+  withAuth()
+    .put(`${userEndpoint}/${id}`, values)
+    .then(res => {
+      debugger;
+    })
+    .catch(error => {
+      debugger;
+    });
 };

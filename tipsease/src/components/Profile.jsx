@@ -6,33 +6,40 @@ import { Formik, Form, Field } from "formik";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function Profile({ currentUser }) {
+function Profile({ currentUser, onEditProfile }) {
   const initialValuesProfile = {
     fullName: currentUser.fullName,
     username: currentUser.username,
-    password: "*****"
+    password: ""
   };
-  const onEditProfile = e => {
-    debugger;
-  };
+
+  const onSubmitEditProfile = (values, actions) => {
+    actions.resetForm();
+    onEditProfile(values, currentUser.id);
+  }
+
   return (
     <Formik
       initialValues={initialValuesProfile}
-      onSubmit={onEditProfile}
+      onSubmit={onSubmitEditProfile}
       render={props => {
         return (
           <Form>
             <label>
-              Full Name: 
+              Full Name:
               <Field name="fullName" type="text" />
             </label>
             <label>
-              Username: 
+              Username:
               <Field name="username" type="text" />
             </label>
             <label>
-              Password: 
-              <Field name="password" type="text" />
+              Password:
+              <Field
+                name="password"
+                type="text"
+                placeholder="Type new password"
+              />
             </label>
             <button>Edit profile</button>
           </Form>
