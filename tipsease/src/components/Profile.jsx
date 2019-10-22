@@ -1,12 +1,25 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 
 // STATE
 
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function Profile({ currentUser, onEditProfile }) {
+const validationSchema = yup.object().shape({
+  fullName: yup
+    .string()
+    .required()
+    .min(2, "Too short"),
+  username: yup
+    .string()
+    .required()
+    .min(5, "Too short")
+    .max(12, "Too long")
+});
+
+function Profile({ currentUser, onEditProfile, history }) {
   const initialValuesProfile = {
     fullName: currentUser.fullName,
     username: currentUser.username,
@@ -14,25 +27,20 @@ function Profile({ currentUser, onEditProfile }) {
   };
 
   const onSubmitEditProfile = (values, actions) => {
-    actions.resetForm();
-    let newValues = {};
     if (values.password === "") {
-        newValues = {
-            fullName: values.fullName,
-            username: values.username,
-        }
+      const { password, ...newValues } = values;
+      onEditProfile(newValues, currentUser.id);
     } else {
-        newValues = {
-            fullName: values.fullName,
-            username: values.username,
-            password: values.password,
-        }
+      const { ...newValues } = values;
+      onEditProfile(newValues, currentUser.id);
     }
-    onEditProfile(newValues, currentUser.id);
-  }
+    actions.resetForm();
+    history.push("/home");
+  };
 
   return (
     <Formik
+      validationSchema={validationSchema}
       initialValues={initialValuesProfile}
       onSubmit={onSubmitEditProfile}
       render={props => {
@@ -41,10 +49,12 @@ function Profile({ currentUser, onEditProfile }) {
             <label>
               Full Name:
               <Field name="fullName" type="text" />
+              <ErrorMessage name="fullName" component="div" />
             </label>
             <label>
               Username:
               <Field name="username" type="text" />
+              <ErrorMessage name="username" component="div" />
             </label>
             <label>
               Password:
@@ -53,6 +63,7 @@ function Profile({ currentUser, onEditProfile }) {
                 type="text"
                 placeholder="Type new password"
               />
+              <ErrorMessage name="password" component="div" />
             </label>
             <button>Edit profile</button>
           </Form>

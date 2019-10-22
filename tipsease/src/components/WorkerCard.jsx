@@ -1,5 +1,6 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 
 // STATE
 
@@ -12,6 +13,14 @@ import { addDefaultSrc } from "../helpers/helpers";
 
 const initialValueTip = 0;
 
+const validationSchema = yup.object().shape({
+  amount: yup
+    .number()
+    .required("Amount required")
+    .positive("No negative amounts allowed")
+    .integer("Number needs to be an integer")
+});
+
 function WorkerCard({
   currentUser,
   listServiceWorkers,
@@ -19,6 +28,7 @@ function WorkerCard({
   onSubmitTip,
   history
 }) {
+  debugger;
   const selectedWorker = listServiceWorkers.find(worker => {
     return worker.id === Number(match.params.id);
   });
@@ -47,6 +57,7 @@ function WorkerCard({
         </div>
       </div>
       <Formik
+        validationSchema={validationSchema}
         initialValues={initialValueTip}
         // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
         onSubmit={onAddTip}
@@ -56,6 +67,7 @@ function WorkerCard({
               <label>
                 Input amount in EUR:
                 <Field name="amount" type="number" />
+                <ErrorMessage name="amount" component='div' />
               </label>
               <button>Tip</button>
             </Form>
