@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Route, withRouter, Redirect } from "react-router-dom";
+import styled from 'styled-components';
 
 // STATE MANAGEMENT
 
@@ -31,18 +32,27 @@ const store = createStore(
   )
 );
 
+const StyledApp = styled.div`
+  background: red;
+  display: flex;
+  flex-direction: row;
+`;
+
 function App(props) {
   return (
-    <div className="App">
+    <StyledApp className="App">
       <Provider store={store}>
-        <NavBar />
-        <Route exact path="/" component={Login} />
-        <PrivateRoute path="/home" component={Container} />
-        <PrivateRoute path="/profile" component={Profile} />
-        <Route path="/service-worker/:id" component={WorkerCard} />
-        {/* <Route path='/profile' component={Profile} /> */}
+        <section>
+          <NavBar />
+        </section>
+        <section>
+          <Route exact path="/" component={Login} />
+          <PrivateRoute path="/home" component={Container} />
+          <PrivateRoute path="/profile" component={Profile} />
+          <Route path="/service-worker/:id" component={WorkerCard} />
+        </section>
       </Provider>
-    </div>
+    </StyledApp>
   );
 }
 
