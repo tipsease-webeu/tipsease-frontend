@@ -31,17 +31,12 @@ const store = createStore(
 );
 
 function App(props) {
-  // LOGOUT FUNCTIONALITY
 
-  const logout = e => {
-    localStorage.clear();
-    props.history.replace('/');
-  };
 
   return (
     <div className="App">
       <Provider store={store}>
-        <NavBar logout={logout} />
+        <NavBar />
         <Route exact path="/" component={Login} />
         <Route path="/home" component={Container} />
         <Route path="/service-worker/:id" component={WorkerCard} />

@@ -23,7 +23,6 @@ function Login({getCurrentUser, history}) {
           isServiceWorker: false,
       })
       .then(res => {
-        debugger
         localStorage.setItem('authorization', res.data.token);
         getCurrentUser(res.data.userInfo);
         history.push('/home');
