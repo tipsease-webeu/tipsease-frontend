@@ -19,8 +19,10 @@ export function currentUserReducer(currentUser = initialUser, action) {
   switch (action.type) {
     case types.ADD_CURRENT_USER:
       return action.payload;
-      case types.CLEAR_CURRENT_USER:
-        return {};
+    case types.CLEAR_CURRENT_USER:
+      return {};
+    case types.EDIT_CURRENT_USER:
+      return action.payload;
     default:
       return currentUser;
   }
