@@ -1,13 +1,18 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
-function NavBar(props) {
+// STATE
+
+import { connect } from "react-redux";
+import * as actionCreators from "../state/actionCreators";
+
+function NavBar({history, clearCurrentUser}) {
   // LOGOUT FUNCTIONALITY
 
   const logout = e => {
     localStorage.clear();
     clearCurrentUser();
-    props.history.replace("/");
+    history.replace("/");
   };
 
   return (
@@ -20,4 +25,9 @@ function NavBar(props) {
   );
 }
 
-export default withRouter(NavBar);
+export default withRouter(
+  connect(
+    state => state,
+    actionCreators
+  )(NavBar)
+);
