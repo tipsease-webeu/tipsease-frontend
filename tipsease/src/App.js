@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Redirect } from "react-router-dom";
 
 // STATE MANAGEMENT
 
@@ -31,19 +31,30 @@ const store = createStore(
 );
 
 function App(props) {
-
-
   return (
     <div className="App">
       <Provider store={store}>
         <NavBar />
         <Route exact path="/" component={Login} />
-        <Route path="/home" component={Container} />
+        <PrivateRoute path="/home" component={Container} />
         <Route path="/service-worker/:id" component={WorkerCard} />
         {/* <Route path='/profile' component={Profile} /> */}
       </Provider>
     </div>
   );
 }
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("authorization") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/" />
+      )
+    }
+  />
+);
 
 export default withRouter(App);
