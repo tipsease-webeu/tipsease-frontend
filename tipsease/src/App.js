@@ -35,16 +35,24 @@ const store = createStore(
 const StyledApp = styled.div`
   display: flex;
   flex-direction: row;
+  .navbar {
+    width: 25vw;
+    background: red;
+  }
+  .content {
+    width: 70vw;
+    background: green;
+  }
 `;
 
 function App(props) {
   return (
     <StyledApp className="App">
       <Provider store={store}>
-        <section>
+        <section className='navbar'>
           <NavBar />
         </section>
-        <section>
+        <section className='content'>
           <Route exact path="/" component={Login} />
           <PrivateRoute path="/home" component={Container} />
           <PrivateRoute path="/profile" component={Profile} />

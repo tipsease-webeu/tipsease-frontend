@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { addDefaultSrc } from "../helpers/helpers";
 
-export default function WorkerCard({ worker }) {
+export default function WorkerListItem({ worker }) {
   return (
     <Link to={`/service-worker/${worker.id}`}>
       <div>
