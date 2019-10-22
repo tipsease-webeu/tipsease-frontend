@@ -1,10 +1,23 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 
 // STATE
 
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
+
+const validationSchema = yup.object().shape({
+  fullName: yup
+    .string()
+    .required()
+    .min(2, "Too short"),
+  username: yup
+    .string()
+    .required()
+    .min(5, "Too short")
+    .max(12, "Too long")
+});
 
 function Profile({ currentUser, onEditProfile, history }) {
   const initialValuesProfile = {
@@ -22,11 +35,12 @@ function Profile({ currentUser, onEditProfile, history }) {
       onEditProfile(newValues, currentUser.id);
     }
     actions.resetForm();
-    history.push('/home');
+    history.push("/home");
   };
 
   return (
     <Formik
+      validationSchema={validationSchema}
       initialValues={initialValuesProfile}
       onSubmit={onSubmitEditProfile}
       render={props => {
@@ -35,10 +49,12 @@ function Profile({ currentUser, onEditProfile, history }) {
             <label>
               Full Name:
               <Field name="fullName" type="text" />
+              <ErrorMessage name="fullName" component="div" />
             </label>
             <label>
               Username:
               <Field name="username" type="text" />
+              <ErrorMessage name="username" component="div" />
             </label>
             <label>
               Password:
@@ -47,6 +63,7 @@ function Profile({ currentUser, onEditProfile, history }) {
                 type="text"
                 placeholder="Type new password"
               />
+              <ErrorMessage name="password" component="div" />
             </label>
             <button>Edit profile</button>
           </Form>
