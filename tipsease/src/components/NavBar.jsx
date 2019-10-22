@@ -7,7 +7,21 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function NavBar({ history, clearCurrentUser }) {
+const StyledNavBar = styled.nav`
+  width: 25vw;
+  height: 100vh;
+  border-right: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+`;
+
+function NavBar({ history, clearCurrentUser, currentUser }) {
   // LOGOUT FUNCTIONALITY
 
   const logout = e => {
@@ -16,23 +30,23 @@ function NavBar({ history, clearCurrentUser }) {
     history.replace("/");
   };
 
-  const StyledNavBar = styled.nav`
-    width: 33vw;
-    background: green;
-    display: flex;
-    flex-direction: column;
-    a {
-      text-decoration: none;
-      color: black;
-    }
-  `;
-
   return (
     <StyledNavBar>
-      Tipsease
-      <NavLink to="/home">Home</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
-      <button onClick={logout}>Logout</button>
+      <h1>Tipsease</h1>
+      <NavLink to="/home">
+        <h2>Home</h2>
+      </NavLink>
+      <NavLink to="/profile">
+        <h2>Profile</h2>
+      </NavLink>
+      <h2 onClick={logout} className="action-button-big">
+        Log out
+      </h2>
+      {/* {currentUser.id ? (
+        <h2 onClick={logout} className="action-button">
+          Log out
+        </h2>
+      ) : null} */}
     </StyledNavBar>
   );
 }

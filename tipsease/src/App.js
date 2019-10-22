@@ -33,7 +33,6 @@ const store = createStore(
 );
 
 const StyledApp = styled.div`
-  background: red;
   display: flex;
   flex-direction: row;
 `;
