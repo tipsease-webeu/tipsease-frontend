@@ -12,10 +12,22 @@ import { addDefaultSrc } from "../helpers/helpers";
 
 const initialValueTip = 0;
 
-function WorkerCard({ currentUser, listServiceWorkers, match, onSubmitTip }) {
+function WorkerCard({
+  currentUser,
+  listServiceWorkers,
+  match,
+  onSubmitTip,
+  history
+}) {
   const selectedWorker = listServiceWorkers.find(worker => {
     return worker.id === Number(match.params.id);
   });
+
+  const onAddTip = (values, action) => {
+    action.resetForm();
+    onSubmitTip(values.amount, selectedWorker.id, currentUser.username);
+    history.push("/home");
+  };
 
   return (
     <div>
@@ -36,7 +48,8 @@ function WorkerCard({ currentUser, listServiceWorkers, match, onSubmitTip }) {
       </div>
       <Formik
         initialValues={initialValueTip}
-        onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+        // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+        onSubmit={onAddTip}
         render={props => {
           return (
             <Form>

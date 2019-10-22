@@ -34,7 +34,6 @@ export function listServiceWorkersReducer(
     case types.ADD_SERVICE_WORKERS:
       return action.payload;
     case types.ADD_TIP:
-      debugger;
       return listServiceWorkers.map(worker => {
         return worker.id !== action.payload.id ? worker : action.payload;
       });
