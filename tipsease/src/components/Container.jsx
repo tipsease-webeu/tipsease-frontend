@@ -11,17 +11,13 @@ import * as actionCreators from "../state/actionCreators";
 import { connect } from "react-redux";
 
 const StyledContainer = styled.div`
-  background: green;
-  width: 75vw;
   display: flex;
   flex-direction: column;
   .header-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-  div {
-    border: 1px solid gray;
+    width: 100%;
   }
 `;
 

@@ -37,11 +37,9 @@ const StyledApp = styled.div`
   flex-direction: row;
   .navbar {
     width: 25vw;
-    background: red;
   }
   .content {
-    width: 70vw;
-    background: green;
+    width: 75vw;
   }
 `;
 
