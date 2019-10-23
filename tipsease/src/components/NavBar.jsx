@@ -31,6 +31,7 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
   };
 
   return (
+<<<<<<< HEAD
     <StyledNavBar>
       <h1>Tipsease</h1>
       <NavLink to="/home">
@@ -48,6 +49,15 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
         </h2>
       ) : null} */}
     </StyledNavBar>
+=======
+    <div>
+      Tipsease
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/register">Register</NavLink>
+      <button onClick={logout}>Logout</button>
+    </div>
+>>>>>>> 516672fd38712cca2a7af26b0b915786a2cde7e0
   );
 }
 
