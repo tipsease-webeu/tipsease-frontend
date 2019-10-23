@@ -31,13 +31,23 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
   };
 
   return (
-    <div>
-      Tipsease
-      <NavLink to="/home">Home</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
-      <NavLink to="/register">Register</NavLink>
-      <button onClick={logout}>Logout</button>
-    </div>
+<StyledNavBar>
+      <h1>Tipsease</h1>
+      <NavLink to="/home">
+        <h2>Home</h2>
+      </NavLink>
+      <NavLink to="/profile">
+        <h2>Profile</h2>
+      </NavLink>
+      <h2 onClick={logout} className="action-button-big">
+        Log out
+      </h2>
+      {/* {currentUser.id ? (
+        <h2 onClick={logout} className="action-button">
+          Log out
+        </h2>
+      ) : null} */}
+    </StyledNavBar>
   );
 }
 
