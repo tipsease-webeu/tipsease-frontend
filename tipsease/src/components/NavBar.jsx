@@ -17,7 +17,7 @@ const StyledNavBar = styled.nav`
   border-right: 1px solid gray;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   a {
     text-decoration: none;
@@ -37,20 +37,24 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
   return (
     <StyledNavBar>
       <Title />
-      <NavLink to="/app/home">
-        <h2>Home</h2>
-      </NavLink>
-      <NavLink to="/app/profile">
-        <h2>Profile</h2>
-      </NavLink>
-      <h2 onClick={logout} className="action-button-big">
-        Log out
-      </h2>
-      {/* {currentUser.id ? (
-        <h2 onClick={logout} className="action-button">
+      <section>
+        <NavLink to="/app/home">
+          <h2>Home</h2>
+        </NavLink>
+
+        <NavLink to="/app/profile">
+          <h2>Profile</h2>
+        </NavLink>
+        <h2 onClick={logout} className="action-button-big">
           Log out
         </h2>
-      ) : null} */}
+      </section>
+      <section>
+        <div>
+          <p>Need help?</p>
+          <p>hello@tipsease.com</p>
+        </div>
+      </section>
     </StyledNavBar>
   );
 }
