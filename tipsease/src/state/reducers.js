@@ -54,7 +54,35 @@ export function tipSuccessReducer(tipSuccess = initialTipSuccess, action) {
       return true;
     case types.RESET_TIP_SUCCESS:
       return false;
+    case types.TASK_COMPLETED:
+      return true;
     default:
       return tipSuccess;
+  }
+}
+
+const initialLoginError = false;
+
+export function loginErrorReducer(loginError = initialLoginError, action) {
+  switch (action.type) {
+    case types.SET_LOGIN_ERROR:
+      return true;
+    case types.CLEAR_LOGIN_ERROR:
+      return false;
+    default:
+      return loginError;
+  }
+}
+
+const initialError = [false, ""];
+
+export function errorReducer(error = initialError, action) {
+  switch (action.type) {
+    case types.SET_ERROR:
+      return [true, action.payload];
+    case types.RESET_ERROR:
+      return [false, ""];
+    default:
+      return error;
   }
 }

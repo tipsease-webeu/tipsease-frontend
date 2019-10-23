@@ -26,6 +26,8 @@ const masterReducer = combineReducers({
   currentUser: reducers.currentUserReducer,
   listServiceWorkers: reducers.listServiceWorkersReducer,
   tipSuccess: reducers.tipSuccessReducer,
+  loginError: reducers.loginErrorReducer,
+  error: reducers.errorReducer
 });
 
 const store = createStore(
@@ -49,22 +51,26 @@ const StyledApp = styled.div`
 
 function App(props) {
   return (
-    <StyledApp className="App">
+    <div className="App">
       <Provider store={store}>
-        <section className="navbar">
-          <NavBar />
-        </section>
-        <section className="content">
-          <PrivateRoute exact path="/" component={Container} />
-          <Route path="/login" component={Login} />
-          <Route path="/home" component={Marketing} />
-
-          <Route path="/register" component={Registration} />
-          <PrivateRoute path="/profile" component={Profile} />
-          <Route path="/service-worker/:id" component={WorkerCard} />
-        </section>
+        <StyledApp>
+          <section className="navbar">
+            <PrivateRoute path="/app" component={NavBar} />
+          </section>
+          <section className="content">
+            <PrivateRoute exact path="/app/home" component={Container} />
+            <PrivateRoute path="/app/profile" component={Profile} />
+            <PrivateRoute
+              path="/app/service-worker/:id"
+              component={WorkerCard}
+            />
+          </section>
+        </StyledApp>
+        <LoginRedirectRoute path="/login" component={Login} />
+        <Route path="/register" component={Registration} />
+        <Route exact path="/" component={Marketing} />
       </Provider>
-    </StyledApp>
+    </div>
   );
 }
 
@@ -76,6 +82,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         <Component {...props} />
       ) : (
         <Redirect to="/login" />
+      )
+    }
+  />
+);
+
+const LoginRedirectRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("authorization") ? (
+        <Redirect to="/app/home" />
+      ) : (
+        <Component {...props} />
       )
     }
   />
