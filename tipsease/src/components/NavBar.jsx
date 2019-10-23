@@ -2,6 +2,10 @@ import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
+// COMPONENTS
+
+import Title from "./Title";
+
 // STATE
 
 import { connect } from "react-redux";
@@ -13,7 +17,7 @@ const StyledNavBar = styled.nav`
   border-right: 1px solid gray;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   a {
     text-decoration: none;
@@ -27,26 +31,30 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
   const logout = e => {
     localStorage.clear();
     clearCurrentUser();
-    history.replace("/");
+    history.replace("/login");
   };
 
   return (
-<StyledNavBar>
-      <h1>Tipsease</h1>
-      <NavLink to="/">
-        <h2>Home</h2>
-      </NavLink>
-      <NavLink to="/profile">
-        <h2>Profile</h2>
-      </NavLink>
-      <h2 onClick={logout} className="action-button-big">
-        Log out
-      </h2>
-      {/* {currentUser.id ? (
-        <h2 onClick={logout} className="action-button">
+    <StyledNavBar>
+      <Title />
+      <section>
+        <NavLink to="/app/home">
+          <h2>Home</h2>
+        </NavLink>
+
+        <NavLink to="/app/profile">
+          <h2>Profile</h2>
+        </NavLink>
+        <h2 onClick={logout} className="action-button-big">
           Log out
         </h2>
-      ) : null} */}
+      </section>
+      <section>
+        <div>
+          <p>Need help?</p>
+          <p>hello@tipsease.com</p>
+        </div>
+      </section>
     </StyledNavBar>
   );
 }

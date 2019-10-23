@@ -4,6 +4,10 @@ import axios from "axios";
 import "../App.css";
 import { Link } from "react-router-dom";
 
+// COMPONENTS
+
+import Title from "./Title";
+
 // STATE
 
 import * as actionCreators from "../state/actionCreators";
@@ -22,7 +26,7 @@ const userRegEndpoint =
 function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
   useEffect(() => {
     clearError();
-  }, [])
+  }, []);
   const onRegFormSubmission = values => {
     axios
       .post(userRegEndpoint, {
@@ -40,6 +44,7 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
   };
   return (
     <>
+      <Title />
       {tipSuccess ? (
         <section className="tip-message">
           <h2>
@@ -76,9 +81,10 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
           );
         }}
       />
-            <section>
+      <section>
         <p>
-          If you are already registered, you can sign in <Link to="/login">here</Link>
+          If you are already registered, you can sign in{" "}
+          <Link to="/login">here</Link>
         </p>
       </section>
     </>

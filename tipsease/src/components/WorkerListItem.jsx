@@ -26,7 +26,7 @@ const StyledLink = styled(Link)`
 export default function WorkerListItem({ worker }) {
   return (
     <div>
-      <StyledLink to={`/service-worker/${worker.id}`}>
+      <StyledLink to={`/app/service-worker/${worker.id}`}>
         <div>
           <img
             src={worker.photoUrl}
