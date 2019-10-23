@@ -35,10 +35,10 @@ export default function WorkerListItem({ worker }) {
           />
         </div>
         <h4>{worker.fullName}</h4>
-        <h4>Workh4lace: {worker.workh4lace}</h4>
-        <h4>Rating: {worker.rating}</h4>
-        <h4># of ratings: {worker.numOfRatings}</h4>
-        <h4>Balance: {worker.accountBalance}</h4>
+        <h4>{worker.workplace}</h4>
+        <h4>{worker.rating}</h4>
+        <h4>{worker.numOfRatings}</h4>
+        <h4>{worker.accountBalance}</h4>
         <h4 className="action-button-small">Click To Tip</h4>
       </StyledLink>
     </div>

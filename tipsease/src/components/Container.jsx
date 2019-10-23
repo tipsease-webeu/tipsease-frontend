@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // COMPONENTS
 
-import WorkerListItem from './WorkerListItem';
+import WorkerListItem from "./WorkerListItem";
 
 // STATE
 
@@ -19,7 +19,25 @@ const StyledContainer = styled.div`
     justify-content: space-between;
     width: 100%;
   }
+  .header-table {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid gray;
+    margin: 0.5rem 2rem;
+    padding: 0.5rem 0;
+  }
 `;
+
+const header = [
+  "photo",
+  "name",
+  "workplace",
+  "rating",
+  "# ratings",
+  "Balance",
+  "Tip!"
+];
 
 function Container({ fetchServiceWorkers, listServiceWorkers }) {
   useEffect(() => {
@@ -28,15 +46,21 @@ function Container({ fetchServiceWorkers, listServiceWorkers }) {
 
   return (
     <StyledContainer>
-      <section className='header-container'>
+      <section className="header-container">
         <h2>Service Workers</h2>
-        <button>Add +</button>
       </section>
       <section>
+        <section className='header-table'>
+          {header.map(item => (
+            <span>{item}</span>
+          ))}
+        </section>
         {!listServiceWorkers ? (
           <h1>Loading...</h1>
         ) : (
-          listServiceWorkers.map(worker => <WorkerListItem key={worker.id} worker={worker} />)
+          listServiceWorkers.map(worker => (
+            <WorkerListItem key={worker.id} worker={worker} />
+          ))
         )}
       </section>
     </StyledContainer>
