@@ -18,6 +18,7 @@ import Container from "./components/Container";
 import WorkerCard from "./components/WorkerCard";
 import Profile from "./components/Profile";
 import Registration from "./components/Registration";
+import MarketingPage from './components/MarketingPage';
 
 const masterReducer = combineReducers({
   count: reducers.countReducer,
@@ -55,11 +56,12 @@ function App(props) {
           <NavBar />
         </section>
         <section className="content">
-          <PrivateRoute exact path="/" component={Container} />
+          <PrivateRoute exact path="/home" component={Container} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Registration} />
           <PrivateRoute path="/profile" component={Profile} />
           <Route path="/service-worker/:id" component={WorkerCard} />
+          <Route exact path='/' component={MarketingPage} />
         </section>
       </Provider>
     </StyledApp>
