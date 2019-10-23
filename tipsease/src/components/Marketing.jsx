@@ -5,7 +5,6 @@ import wallet from "../images/wallet.png";
 import car from "../images/car.png";
 import cash from "../images/cash-1.png";
 import smartmoney from "../images/smartmoney.png";
-
 import tipsimg from "../images/tipsease-img1.png";
 import homescreen from "../images/home-screen.png";
 
@@ -20,10 +19,10 @@ export default function Marketing() {
             </h3>
             <ul className="nav-list">
               <li className="list-item">
-                <a href="#">Register</a>
+                <a href="/register">Register</a>
               </li>
               <li className="list-item">
-                <a href="#">Login</a>
+                <a href="/login">Login</a>
               </li>
             </ul>
           </nav>
@@ -80,6 +79,7 @@ export default function Marketing() {
           </div>
           <div className="service-worker-content">
             <div className="service-worker-features">
+                <div>
               <p>
                 <img className="feature-icons" src={wallet} /> Fast as paying
                 with cash from a wallet or money clip
@@ -98,6 +98,7 @@ export default function Marketing() {
               <img className="feature-icons" src={smartmoney} /> It's anonymous
               and there's no need to know each other
             </p>
+            </div>
             <div>
               <img src={tipsimg} />
             </div>
@@ -112,26 +113,27 @@ export default function Marketing() {
               better customer relations
             </p>
           </div>
-          <div>
-            <div className="service-worker-content">
+          <div className="service-worker-content">
+            <div>
               <img src={tipsimg} />
             </div>
             <div className="service-worker-features">
               <p>
-                <img className="feature-icons" src={wallet} /> Encourage better
-                teamwork through a shared Tip Jar
+                <img className="feature-icons" src={wallet} /> Never miss an
+                opportunity to get tipped
               </p>
               <p>
-                <img className="feature-icons" src={car} /> Deliver better,
-                faster service to your customers
+                <img className="feature-icons" src={car} /> Get paid by anyone,
+                anywhere, anytime
+              </p>
+
+              <p>
+                <img className="feature-icons" src={cash} /> Get paid faster and
+                more often
               </p>
               <p>
-                <img ClassName="feature-icons" src={cash} /> Motivate service
-                workers towards increased productivity
-              </p>
-              <p>
-                <img className="feature-icons" src={smartmoney} /> Reduce
-                service fee leakage and fraud
+                <img className="feature-icons" src={smartmoney} /> Earn Bonuses
+                through our Referral Incentives
               </p>
             </div>
           </div>
