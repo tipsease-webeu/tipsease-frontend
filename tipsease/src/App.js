@@ -25,7 +25,7 @@ const masterReducer = combineReducers({
   listServiceWorkers: reducers.listServiceWorkersReducer,
   tipSuccess: reducers.tipSuccessReducer,
   loginError: reducers.loginErrorReducer,
-  errorMessage: reducers.errorMessageReducer,
+  error: reducers.errorReducer,
 });
 
 const store = createStore(

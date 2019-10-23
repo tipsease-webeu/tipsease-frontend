@@ -47,8 +47,9 @@ function Login({
   resetTipSuccess,
   activateErrorLogin,
   loginError,
-  setErrorMessage,
-  errorMessage
+  setError,
+  clearError,
+  error
 }) {
   useEffect(() => {
     resetTipSuccess();
@@ -62,6 +63,7 @@ function Login({
         isServiceWorker: false
       })
       .then(res => {
+        clearError();
         localStorage.setItem("authorization", res.data.token);
         getCurrentUser(res.data.userInfo);
         history.push("/");
@@ -69,14 +71,14 @@ function Login({
       .catch(error => {
         activateErrorLogin();
         action.resetForm();
-        setErrorMessage(error.response.data.message);
+        setError(error.response.data.message);
       });
   };
   return (
     <>
-      {loginError ? (
+      {error[0] ? (
         <section>
-          <h2>{errorMessage}. Please try again.</h2>
+          <h2>{error[1]}. Please try again.</h2>
         </section>
       ) : null}
       <Formik
@@ -101,8 +103,7 @@ function Login({
       />
       <section>
         <p>
-          If you are not registered, please sign up{" "}
-          <Link to="register">here</Link>
+          If you are not registered, please sign up <Link to="/register">here</Link>
         </p>
       </section>
     </>

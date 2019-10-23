@@ -74,16 +74,15 @@ export function loginErrorReducer(loginError = initialLoginError, action) {
   }
 }
 
-const initialErrorMessage = null;
+const initialError = [false, ""];
 
-export function errorMessageReducer(
-  errorMessage = initialErrorMessage,
-  action
-) {
+export function errorReducer(error = initialError, action) {
   switch (action.type) {
-    case types.SET_ERROR_MESSAGE:
-      return action.payload;
+    case types.SET_ERROR:
+      return [true, action.payload];
+    case types.RESET_ERROR:
+      return [false, ""];
     default:
-      return errorMessage;
+      return error;
   }
 }

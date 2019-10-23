@@ -137,9 +137,15 @@ export const activateErrorLogin = () => {
   }
 }
 
-export const setErrorMessage = errorMessage => {
+export const setError = errorMessage => {
   return {
-    type: types.SET_ERROR_MESSAGE,
+    type: types.SET_ERROR,
     payload: errorMessage
+  }
+}
+
+export const clearError = () => {
+  return {
+    type: types.RESET_ERROR,
   }
 }

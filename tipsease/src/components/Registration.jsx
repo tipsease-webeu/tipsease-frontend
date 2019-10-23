@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import "../App.css";
@@ -19,7 +19,10 @@ const initialValuesLogin = {
 const userRegEndpoint =
   "https://build-tipsease.herokuapp.com/auth/users/register";
 
-function Registration({ history, setTaskSucceded, tipSuccess }) {
+function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
+  useEffect(() => {
+    clearError();
+  })
   const onRegFormSubmission = values => {
     axios
       .post(userRegEndpoint, {
@@ -73,6 +76,11 @@ function Registration({ history, setTaskSucceded, tipSuccess }) {
           );
         }}
       />
+            <section>
+        <p>
+          If you are already registered, you can sign in <Link to="/login">here</Link>
+        </p>
+      </section>
     </>
   );
 }
