@@ -15,7 +15,7 @@ import { addDefaultSrc } from "../helpers/helpers";
 
 const initialValueTip = 0;
 
-const validationSchema = yup.object().shape({
+const validationSchemaTip = yup.object().shape({
   amount: yup
     .number()
     .required("Amount required")
@@ -109,7 +109,7 @@ function WorkerCard({
         <h2>{selectedWorker.fullName}</h2>
         <div className="tip-form">
           <Formik
-            validationSchema={validationSchema}
+            validationSchema={validationSchemaTip}
             initialValues={initialValueTip}
             // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
             onSubmit={onAddTip}
@@ -131,7 +131,7 @@ function WorkerCard({
         </div>
         <div className="tip-form">
           <Formik
-            validationSchema={validationSchema}
+            validationSchema={validationSchemaTip}
             initialValues={initialValueTip}
             // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
             onSubmit={onAddTip}
@@ -139,7 +139,7 @@ function WorkerCard({
               return (
                 <Form>
                   <div className="input-form">
-                    <label htmlFor="stars">Input amount in EUR: </label>
+                    <label htmlFor="stars">Submit your rating: </label>
                     <Field name="stars" type="number" id="stars" />
                   </div>
                   <div className="validation-field">
