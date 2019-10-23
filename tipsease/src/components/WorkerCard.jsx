@@ -100,7 +100,8 @@ function WorkerCard({
   onSubmitTip,
   history,
   tipSuccess,
-  resetTipSuccess
+  resetTipSuccess,
+  onSubmitRating
 }) {
   const selectedWorker = listServiceWorkers.find(worker => {
     return worker.id === Number(match.params.id);
@@ -113,8 +114,7 @@ function WorkerCard({
 
   const onAddRating = (values, action) => {
     action.resetForm();
-    // onSubmitTip(values.amount, selectedWorker.id, currentUser.username);
-    console.log(values);
+    onSubmitRating(values.stars, selectedWorker.id);
   };
 
   return (

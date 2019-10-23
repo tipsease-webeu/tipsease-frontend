@@ -41,6 +41,10 @@ export function listServiceWorkersReducer(
       return listServiceWorkers.map(worker => {
         return worker.id !== action.payload.id ? worker : action.payload;
       });
+    case types.ADD_RATING:
+      return listServiceWorkers.map(worker => {
+        return worker.id !== action.payload.id ? worker : action.payload;
+      });
     default:
       return listServiceWorkers;
   }
