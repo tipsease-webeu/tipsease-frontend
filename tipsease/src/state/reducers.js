@@ -92,3 +92,14 @@ export function errorReducer(error = initialError, action) {
       return error;
   }
 }
+
+const initialSorted = false;
+
+export function sortReducer(sorted = initialSorted, action) {
+  switch(action.type) {
+    case types.SORT_WORKERS:
+      return !sorted;
+    default:
+      return sorted;
+  }
+}
