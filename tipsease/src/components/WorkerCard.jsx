@@ -126,7 +126,7 @@ function WorkerCard({
                 <Form>
                   <div className="input-form">
                     <label htmlFor="amount">Input amount in EUR: </label>
-                    <Field name="amount" type="number" id="amount" />
+                    <Field name="amount" type="number" id="amount" min="1" />
                   </div>
                   <div className="validation-field">
                     <ErrorMessage name="amount" component="div" />
@@ -148,7 +148,13 @@ function WorkerCard({
                 <Form>
                   <div className="input-form">
                     <label htmlFor="stars">Submit your rating: </label>
-                    <Field name="stars" type="number" id="stars" />
+                    <Field
+                      name="stars"
+                      type="number"
+                      id="stars"
+                      min="1"
+                      max="5"
+                    />
                   </div>
                   <div className="validation-field">
                     <ErrorMessage name="stars" component="div" />
@@ -160,13 +166,11 @@ function WorkerCard({
           />
         </div>
       </section>
-      {
-        tipSuccess ? (
-        <section className='tip-message'>
+      {tipSuccess ? (
+        <section className="tip-message">
           <h2>Thank you! You have tipped {selectedWorker.fullName}</h2>
         </section>
-      ) : null
-      }
+      ) : null}
 
       <section className="body-worker-card">
         <div className="img-container">
