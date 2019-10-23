@@ -33,7 +33,7 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
   return (
 <StyledNavBar>
       <h1>Tipsease</h1>
-      <NavLink to="/home">
+      <NavLink to="/">
         <h2>Home</h2>
       </NavLink>
       <NavLink to="/profile">

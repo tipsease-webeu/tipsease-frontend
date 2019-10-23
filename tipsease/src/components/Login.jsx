@@ -51,7 +51,7 @@ function Login({ getCurrentUser, history }) {
       .then(res => {
         localStorage.setItem("authorization", res.data.token);
         getCurrentUser(res.data.userInfo);
-        history.push("/home");
+        history.push("/");
       })
       .catch(error => {
         alert(error.message);
