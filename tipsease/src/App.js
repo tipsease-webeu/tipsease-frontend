@@ -50,21 +50,26 @@ const StyledApp = styled.div`
 
 function App(props) {
   return (
-    <StyledApp className="App">
+    <div className="App">
       <Provider store={store}>
+        <StyledApp>
+          <section className="navbar">
+            <PrivateRoute path="/app" component={NavBar} />
+          </section>
+          <section className="content">
+            <PrivateRoute exact path="/app/home" component={Container} />
+            <PrivateRoute path="/app/profile" component={Profile} />
+            <PrivateRoute
+              path="/app/service-worker/:id"
+              component={WorkerCard}
+            />
+          </section>
+        </StyledApp>
+        <LoginRedirectRoute path="/login" component={Login} />
+        <Route path="/register" component={Registration} />
         <Route exact path="/" component={MarketingPage} />
-        <section className="navbar">
-          <PrivateRoute path="/app" component={NavBar} />
-        </section>
-        <section className="content">
-          <LoginRedirectRoute path="/login" component={Login} />
-          <Route path="/register" component={Registration} />
-          <PrivateRoute exact path="/app/home" component={Container} />
-          <PrivateRoute path="/app/profile" component={Profile} />
-          <PrivateRoute path="/app/service-worker/:id" component={WorkerCard} />
-        </section>
       </Provider>
-    </StyledApp>
+    </div>
   );
 }
 
