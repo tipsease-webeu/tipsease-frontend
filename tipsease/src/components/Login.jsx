@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as yup from "yup";
+import styled from "styled-components";
 
 // STATE
 
@@ -22,6 +23,22 @@ const validationSchema = yup.object().shape({
     .min(2, "Too short"),
   password: yup.string().required()
 });
+
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 10% auto 0;
+  label {
+    font-size: 2rem;
+  }
+  input {
+    font-size: 3rem;
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+`;
 
 function Login({ getCurrentUser, history }) {
   const onLoginFormSubmission = values => {
@@ -47,19 +64,18 @@ function Login({ getCurrentUser, history }) {
       onSubmit={onLoginFormSubmission}
       render={props => {
         return (
-          <Form>
-            <label>
-              username:
-              <Field name="username" type="text" />
-              <ErrorMessage name="username" component="div" />
-            </label>
-            <label>
-              password:
-              <Field name="password" type="password" />
-              <ErrorMessage name="password" component="div" />
-            </label>
-            <button type="submit">Login</button>
-          </Form>
+          <StyledForm>
+            <label for="name">username:</label>
+            <Field name="username" type="text" />
+            <ErrorMessage name="username" component="div" />
+            <label for="password">password:</label>
+
+            <Field name="password" type="password" />
+            <ErrorMessage name="password" component="div" />
+            <button type="submit" className="action-button-big">
+              Login
+            </button>
+          </StyledForm>
         );
       }}
     />
