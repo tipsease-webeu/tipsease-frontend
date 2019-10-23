@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Route, withRouter, Redirect } from "react-router-dom";
+import styled from "styled-components";
 
 // STATE MANAGEMENT
 
@@ -16,7 +17,7 @@ import Login from "./components/Login";
 import Container from "./components/Container";
 import WorkerCard from "./components/WorkerCard";
 import Profile from "./components/Profile";
-import Registration from "./components/Registration"
+import Registration from "./components/Registration";
 
 const masterReducer = combineReducers({
   count: reducers.countReducer,
@@ -32,19 +33,33 @@ const store = createStore(
   )
 );
 
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: row;
+  .navbar {
+    width: 25vw;
+  }
+  .content {
+    width: 75vw;
+  }
+`;
+
 function App(props) {
   return (
-    <div className="App">
+    <StyledApp className="App">
       <Provider store={store}>
-        <NavBar />
-        <Route exact path="/" component={Login} />
-        <Route path="/register" component={Registration} />
-        <PrivateRoute path="/home" component={Container} />
-        <PrivateRoute path="/profile" component={Profile} />
-        <Route path="/service-worker/:id" component={WorkerCard} />
-        {/* <Route path='/profile' component={Profile} /> */}
+        <section className="navbar">
+          <NavBar />
+        </section>
+        <section className="content">
+          <Route exact path="/" component={Login} />
+          <Route path="/register" component={Registration} />
+          <PrivateRoute path="/home" component={Container} />
+          <PrivateRoute path="/profile" component={Profile} />
+          <Route path="/service-worker/:id" component={WorkerCard} />
+        </section>
       </Provider>
-    </div>
+    </StyledApp>
   );
 }
 

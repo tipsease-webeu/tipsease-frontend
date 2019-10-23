@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import styled from "styled-components";
 
 // STATE
 
@@ -21,6 +22,59 @@ const validationSchema = yup.object().shape({
     .integer("Number needs to be an integer")
 });
 
+// STYLED COMPONENTS
+
+const StyledCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  .header-worker-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    border-bottom: 0.5px solid gray;
+    padding: 2rem;
+    form {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 1.5rem;
+      input {
+        font-size: 1.5 rem;
+      }
+    }
+  }
+  .body-worker-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    div {
+      width: 50%;
+    }
+    .img-container {
+      width: 20%;
+    }
+    img {
+      width: 100%;
+      border-radius: 100%;
+    }
+    .worker-details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100%;
+      h3 {
+        margin: 1rem;
+      }
+    }
+  }
+`;
+
 function WorkerCard({
   currentUser,
   listServiceWorkers,
@@ -40,41 +94,48 @@ function WorkerCard({
   };
 
   return (
-    <div>
-      <div>
-        <h1>{selectedWorker.fullName}</h1>
-        <div>
+    <StyledCard>
+      <section className="header-worker-card">
+        <h2>{selectedWorker.fullName}</h2>
+        <div className="tip-form">
+          <Formik
+            validationSchema={validationSchema}
+            initialValues={initialValueTip}
+            // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+            onSubmit={onAddTip}
+            render={props => {
+              return (
+                <Form>
+                  <div className="input-form">
+                    <label for="amount">Input amount in EUR: </label>
+                    <Field name="amount" type="number" />
+                  </div>
+                  <div className="validation-field">
+                    <ErrorMessage name="amount" component="div" />
+                  </div>
+                  <button>Tip</button>
+                </Form>
+              );
+            }}
+          />
+        </div>
+      </section>
+      <section className="body-worker-card">
+        <div className="img-container">
           <img
             src={selectedWorker.photoUrl}
             onError={addDefaultSrc}
             alt="profile-pic"
           />
         </div>
-        <div>
-          <p>Workplace: {selectedWorker.workplace}</p>
-          <p>Rating: {selectedWorker.rating}</p>
-          <p># of ratings: {selectedWorker.numOfRatings}</p>
+        <div className="worker-details">
+          <h3>Workplace: {selectedWorker.workplace}</h3>
+          <h3>Rating: {selectedWorker.rating}</h3>
+          <h3># of ratings: {selectedWorker.numOfRatings}</h3>
+          <h3>Balance: {selectedWorker.accountBalance}</h3>
         </div>
-      </div>
-      <Formik
-        validationSchema={validationSchema}
-        initialValues={initialValueTip}
-        // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
-        onSubmit={onAddTip}
-        render={props => {
-          return (
-            <Form>
-              <label>
-                Input amount in EUR:
-                <Field name="amount" type="number" />
-                <ErrorMessage name="amount" component='div' />
-              </label>
-              <button>Tip</button>
-            </Form>
-          );
-        }}
-      />
-    </div>
+      </section>
+    </StyledCard>
   );
 }
 
