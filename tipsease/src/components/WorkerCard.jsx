@@ -23,6 +23,14 @@ const validationSchemaTip = yup.object().shape({
     .integer("Number needs to be an integer")
 });
 
+const validationSchemaRating = yup.object().shape({
+  stars: yup
+    .number()
+    .required("Amount required")
+    .positive("No negative amounts allowed")
+    .integer("Number needs to be an integer")
+});
+
 // STYLED COMPONENTS
 
 const StyledCard = styled.div`
@@ -131,7 +139,7 @@ function WorkerCard({
         </div>
         <div className="tip-form">
           <Formik
-            validationSchema={validationSchemaTip}
+            validationSchema={validationSchemaRating}
             initialValues={initialValueTip}
             // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
             onSubmit={onAddTip}
