@@ -22,7 +22,8 @@ import Registration from "./components/Registration";
 const masterReducer = combineReducers({
   count: reducers.countReducer,
   currentUser: reducers.currentUserReducer,
-  listServiceWorkers: reducers.listServiceWorkersReducer
+  listServiceWorkers: reducers.listServiceWorkersReducer,
+  tipSuccess: reducers.tipSuccessReducer,
 });
 
 const store = createStore(

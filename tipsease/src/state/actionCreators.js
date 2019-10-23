@@ -88,7 +88,7 @@ export const clearCurrentUser = currentUser => {
     payload: currentUser
   };
 };
-const editCurrentUser = currentUser => {
+export const editCurrentUser = currentUser => {
   return {
     type: types.EDIT_CURRENT_USER,
     payload: currentUser
@@ -112,10 +112,15 @@ export const onEditProfile = (values, id) => dispatch => {
   withAuth()
     .put(`${userEndpoint}/${id}`, values)
     .then(res => {
-      debugger
       dispatch(fetchCurrentUser(id));
     })
     .catch(error => {
       alert(error.message);
     });
+};
+
+export const resetTipSuccess = () => {
+  return {
+    type: types.RESET_TIP_SUCCESS,
+  };
 };
