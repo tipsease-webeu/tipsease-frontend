@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 // STATE
 
@@ -90,7 +91,6 @@ function WorkerCard({
   const onAddTip = (values, action) => {
     action.resetForm();
     onSubmitTip(values.amount, selectedWorker.id, currentUser.username);
-    history.push("/home");
   };
 
   return (
@@ -134,6 +134,9 @@ function WorkerCard({
           <h3># of ratings: {selectedWorker.numOfRatings}</h3>
           <h3>Balance: {selectedWorker.accountBalance}</h3>
         </div>
+      </section>
+      <section>
+        <Link to='/home'>Back</Link>
       </section>
     </StyledCard>
   );
