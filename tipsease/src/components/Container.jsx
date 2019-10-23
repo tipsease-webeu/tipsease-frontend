@@ -44,10 +44,29 @@ function Container({ fetchServiceWorkers, listServiceWorkers }) {
     fetchServiceWorkers();
   }, []);
 
+  const sort = () => {
+    const test = listServiceWorkers.sort((a, b) => {
+      var nameA = a.fullName.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.fullName.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+    console.log(test);
+  }
+
   return (
     <StyledContainer>
       <section className="header-container">
         <h2>Service Workers</h2>
+      </section>
+      <section>
+        <button onClick={() => sort()}>Sort by name</button>
       </section>
       <section>
         <section className='header-table'>
