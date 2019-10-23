@@ -107,8 +107,8 @@ function WorkerCard({
               return (
                 <Form>
                   <div className="input-form">
-                    <label for="amount">Input amount in EUR: </label>
-                    <Field name="amount" type="number" />
+                    <label htmlFor="amount">Input amount in EUR: </label>
+                    <Field name="amount" type="number" id='amount'/>
                   </div>
                   <div className="validation-field">
                     <ErrorMessage name="amount" component="div" />
