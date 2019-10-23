@@ -13,7 +13,13 @@ import * as actionCreators from "../state/actionCreators";
 
 import { addDefaultSrc } from "../helpers/helpers";
 
-const initialValueTip = 0;
+const initialValueTip = {
+  amount: 0
+};
+
+const initialValueRating = {
+  stars: 0
+};
 
 const validationSchemaTip = yup.object().shape({
   amount: yup
@@ -146,7 +152,7 @@ function WorkerCard({
         <div className="tip-form">
           <Formik
             validationSchema={validationSchemaRating}
-            initialValues={initialValueTip}
+            initialValues={initialValueRating}
             // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
             onSubmit={onAddRating}
             render={props => {
