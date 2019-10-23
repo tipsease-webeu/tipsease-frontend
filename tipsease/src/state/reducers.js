@@ -45,6 +45,8 @@ export function listServiceWorkersReducer(
       return listServiceWorkers.map(worker => {
         return worker.id !== action.payload.id ? worker : action.payload;
       });
+    case types.SORT_WORKERS:
+      return action.payload;
     default:
       return listServiceWorkers;
   }

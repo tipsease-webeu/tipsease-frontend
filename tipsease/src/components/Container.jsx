@@ -39,37 +39,41 @@ const header = [
   "Tip!"
 ];
 
-function Container({ fetchServiceWorkers, listServiceWorkers }) {
+function Container({
+  fetchServiceWorkers,
+  listServiceWorkers,
+  sortListWorkers
+}) {
   useEffect(() => {
     fetchServiceWorkers();
   }, []);
 
-  const sort = () => {
-    const test = listServiceWorkers.sort((a, b) => {
+  const sort = type => {
+    const sortedArrayWorkers = listServiceWorkers.sort((a, b) => {
       var nameA = a.fullName.toUpperCase(); // ignore upper and lowercase
       var nameB = b.fullName.toUpperCase(); // ignore upper and lowercase
       if (nameA < nameB) {
-        return -1;
+        return type === "asc" ? -1 : 1;
       }
       if (nameA > nameB) {
-        return 1;
+        return type === "asc" ? 1 : -1;
       }
       // names must be equal
       return 0;
     });
-    console.log(test);
-  }
-
+    sortListWorkers(sortedArrayWorkers);
+  };
   return (
     <StyledContainer>
       <section className="header-container">
         <h2>Service Workers</h2>
       </section>
       <section>
-        <button onClick={() => sort()}>Sort by name</button>
+        <button onClick={() => sort("asc")}>Sort by name ASC</button>
+        <button onClick={() => sort("desc")}>Sort by name DESC</button>
       </section>
       <section>
-        <section className='header-table'>
+        <section className="header-table">
           {header.map(item => (
             <span>{item}</span>
           ))}
