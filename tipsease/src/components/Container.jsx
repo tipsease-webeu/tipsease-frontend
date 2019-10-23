@@ -36,7 +36,7 @@ function Container({ fetchServiceWorkers, listServiceWorkers }) {
         {!listServiceWorkers ? (
           <h1>Loading...</h1>
         ) : (
-          listServiceWorkers.map(worker => <WorkerListItem worker={worker} />)
+          listServiceWorkers.map(worker => <WorkerListItem key={worker.id} worker={worker} />)
         )}
       </section>
     </StyledContainer>

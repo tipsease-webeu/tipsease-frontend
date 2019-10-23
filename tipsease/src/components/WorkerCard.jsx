@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // STATE
 
@@ -73,6 +74,15 @@ const StyledCard = styled.div`
       }
     }
   }
+  .tip-message {
+    color: red;
+    margin: 2rem;
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 function WorkerCard({
@@ -80,9 +90,10 @@ function WorkerCard({
   listServiceWorkers,
   match,
   onSubmitTip,
-  history
+  history,
+  tipSuccess,
+  resetTipSuccess
 }) {
-  debugger;
   const selectedWorker = listServiceWorkers.find(worker => {
     return worker.id === Number(match.params.id);
   });
@@ -90,7 +101,6 @@ function WorkerCard({
   const onAddTip = (values, action) => {
     action.resetForm();
     onSubmitTip(values.amount, selectedWorker.id, currentUser.username);
-    history.push("/home");
   };
 
   return (
@@ -107,8 +117,8 @@ function WorkerCard({
               return (
                 <Form>
                   <div className="input-form">
-                    <label for="amount">Input amount in EUR: </label>
-                    <Field name="amount" type="number" />
+                    <label htmlFor="amount">Input amount in EUR: </label>
+                    <Field name="amount" type="number" id="amount" />
                   </div>
                   <div className="validation-field">
                     <ErrorMessage name="amount" component="div" />
@@ -120,6 +130,14 @@ function WorkerCard({
           />
         </div>
       </section>
+      {
+        tipSuccess ? (
+        <section className='tip-message'>
+          <h2>Thank you! You have tipped {selectedWorker.fullName}</h2>
+        </section>
+      ) : null
+      }
+
       <section className="body-worker-card">
         <div className="img-container">
           <img
@@ -134,6 +152,11 @@ function WorkerCard({
           <h3># of ratings: {selectedWorker.numOfRatings}</h3>
           <h3>Balance: {selectedWorker.accountBalance}</h3>
         </div>
+      </section>
+      <section>
+        <Link to="/" onClick={() => resetTipSuccess()}>
+          Back
+        </Link>
       </section>
     </StyledCard>
   );

@@ -45,3 +45,16 @@ export function listServiceWorkersReducer(
       return listServiceWorkers;
   }
 }
+
+const initialTipSuccess = false;
+
+export function tipSuccessReducer(tipSuccess = initialTipSuccess, action) {
+  switch (action.type) {
+    case types.ADD_TIP:
+      return true;
+    case types.RESET_TIP_SUCCESS:
+      return false;
+    default:
+      return tipSuccess;
+  }
+}

@@ -51,7 +51,7 @@ function Login({ getCurrentUser, history }) {
       .then(res => {
         localStorage.setItem("authorization", res.data.token);
         getCurrentUser(res.data.userInfo);
-        history.push("/home");
+        history.push("/");
       })
       .catch(error => {
         alert(error.message);
@@ -65,12 +65,11 @@ function Login({ getCurrentUser, history }) {
       render={props => {
         return (
           <StyledForm>
-            <label for="name">username:</label>
-            <Field name="username" type="text" />
+            <label htmlFor="name">username:</label>
+            <Field name="username" type="text" id="name" />
             <ErrorMessage name="username" component="div" />
-            <label for="password">password:</label>
-
-            <Field name="password" type="password" />
+            <label htmlFor="password">password:</label>
+            <Field name="password" type="password" id="password" />
             <ErrorMessage name="password" component="div" />
             <button type="submit" className="action-button-big">
               Login

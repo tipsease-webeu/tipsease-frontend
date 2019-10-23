@@ -22,7 +22,8 @@ import Registration from "./components/Registration";
 const masterReducer = combineReducers({
   count: reducers.countReducer,
   currentUser: reducers.currentUserReducer,
-  listServiceWorkers: reducers.listServiceWorkersReducer
+  listServiceWorkers: reducers.listServiceWorkersReducer,
+  tipSuccess: reducers.tipSuccessReducer,
 });
 
 const store = createStore(
@@ -52,9 +53,9 @@ function App(props) {
           <NavBar />
         </section>
         <section className="content">
-          <Route exact path="/" component={Login} />
+          <PrivateRoute exact path="/" component={Container} />
+          <Route path="/login" component={Login} />
           <Route path="/register" component={Registration} />
-          <PrivateRoute path="/home" component={Container} />
           <PrivateRoute path="/profile" component={Profile} />
           <Route path="/service-worker/:id" component={WorkerCard} />
         </section>
@@ -70,7 +71,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       localStorage.getItem("authorization") ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/login" />
       )
     }
   />
