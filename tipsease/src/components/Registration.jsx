@@ -22,7 +22,7 @@ const userRegEndpoint =
 function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
   useEffect(() => {
     clearError();
-  })
+  }, [])
   const onRegFormSubmission = values => {
     axios
       .post(userRegEndpoint, {
