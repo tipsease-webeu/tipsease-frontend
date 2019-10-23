@@ -111,6 +111,12 @@ function WorkerCard({
     onSubmitTip(values.amount, selectedWorker.id, currentUser.username);
   };
 
+  const onAddRating = (values, action) => {
+    action.resetForm();
+    // onSubmitTip(values.amount, selectedWorker.id, currentUser.username);
+    console.log(values);
+  };
+
   return (
     <StyledCard>
       <section className="header-worker-card">
@@ -142,7 +148,7 @@ function WorkerCard({
             validationSchema={validationSchemaRating}
             initialValues={initialValueTip}
             // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
-            onSubmit={onAddTip}
+            onSubmit={onAddRating}
             render={props => {
               return (
                 <Form>
