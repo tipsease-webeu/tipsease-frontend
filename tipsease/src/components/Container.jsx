@@ -48,10 +48,10 @@ function Container({
     fetchServiceWorkers();
   }, []);
 
-  const sort = type => {
+  const sortAlpha = (field, type) => {
     const sortedArrayWorkers = listServiceWorkers.sort((a, b) => {
-      var nameA = a.fullName.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.fullName.toUpperCase(); // ignore upper and lowercase
+      var nameA = a[field].toUpperCase(); // ignore upper and lowercase
+      var nameB = b[field].toUpperCase(); // ignore upper and lowercase
       if (nameA < nameB) {
         return type === "asc" ? -1 : 1;
       }
@@ -63,14 +63,33 @@ function Container({
     });
     sortListWorkers(sortedArrayWorkers);
   };
+
+  const sortScore = (field, type) => {
+    const sortedArrayWorkers = listServiceWorkers.sort((a, b) => {
+      return parseFloat(a[field]) - parseFloat(b[field]);
+    });
+    // sortListWorkers(sortedArrayWorkers);
+    console.log(sortedArrayWorkers)
+  };
+
   return (
     <StyledContainer>
       <section className="header-container">
         <h2>Service Workers</h2>
       </section>
       <section>
-        <button onClick={() => sort("asc")}>Sort by name ASC</button>
-        <button onClick={() => sort("desc")}>Sort by name DESC</button>
+        <button onClick={() => sortAlpha("fullName", "asc")}>
+          Sort by name ASC
+        </button>
+        <button onClick={() => sortAlpha("fullName", "desc")}>
+          Sort by name DESC
+        </button>
+        {/* <button onClick={() => sortScore("rating", "asc")}>
+          Sort by rating score ASC
+        </button>
+        <button onClick={() => sortScore("rating", "desc")}>
+          Sort by rating score DESC
+        </button> */}
       </section>
       <section>
         <section className="header-table">
