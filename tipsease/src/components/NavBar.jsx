@@ -20,6 +20,7 @@ function NavBar({history, clearCurrentUser}) {
       Tipsease
       <NavLink to="/home">Home</NavLink>
       <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/register">Register</NavLink>
       <button onClick={logout}>Logout</button>
     </div>
   );

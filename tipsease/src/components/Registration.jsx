@@ -17,7 +17,7 @@ const initialValuesLogin = {
 
 const userRegEndpoint = "https://build-tipsease.herokuapp.com/auth/users/register";
 
-function Registration({getCurrentUser, history}) {
+function Registration({history}) {
   const onRegFormSubmission = values => {
     axios
       .post(userRegEndpoint, {
@@ -27,7 +27,6 @@ function Registration({getCurrentUser, history}) {
         photoUrl: values.photourl
       })
       .then(res => {
-        getCurrentUser(res.data.userInfo);
         history.push('/');
       })
       .catch(error => {
@@ -46,7 +45,7 @@ function Registration({getCurrentUser, history}) {
               <Field name="fullname" type="text" />
             </label>
             <label>
-              password:
+              Password:
               <Field name="password" type="password" />
             </label>
             <label>
