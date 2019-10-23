@@ -52,10 +52,10 @@ function Registration({history}) {
               User Name:
               <Field name="username" type="text" />
             </label>
-            <label>
+            {/* <label>
               Worker Type:
               <Field name="text" type="text" />
-            </label>
+            </label> */}
             <label>
               Photo URL:
               <Field name="photourl" type="text" />
