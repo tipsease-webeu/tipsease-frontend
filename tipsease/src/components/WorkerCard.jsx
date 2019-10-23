@@ -25,7 +25,6 @@ const validationSchemaTip = yup.object().shape({
   amount: yup
     .number()
     .required("Amount required")
-    .positive("No negative amounts allowed")
     .integer("Number needs to be an integer")
 });
 
@@ -33,7 +32,6 @@ const validationSchemaRating = yup.object().shape({
   stars: yup
     .number()
     .required("Amount required")
-    .positive("No negative amounts allowed")
     .integer("Number needs to be an integer")
 });
 
