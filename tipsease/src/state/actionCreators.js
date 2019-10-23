@@ -124,3 +124,28 @@ export const resetTipSuccess = () => {
     type: types.RESET_TIP_SUCCESS,
   };
 };
+
+export const setTaskSucceded = () => {
+  return {
+    type: types.TASK_COMPLETED,
+  }
+}
+
+export const activateErrorLogin = () => {
+  return {
+    type: types.SET_LOGIN_ERROR,
+  }
+}
+
+export const setError = errorMessage => {
+  return {
+    type: types.SET_ERROR,
+    payload: errorMessage
+  }
+}
+
+export const clearError = () => {
+  return {
+    type: types.RESET_ERROR,
+  }
+}
