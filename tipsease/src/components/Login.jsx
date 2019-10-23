@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as yup from "yup";
@@ -41,7 +41,11 @@ const StyledForm = styled(Form)`
   }
 `;
 
-function Login({ getCurrentUser, history }) {
+function Login({ getCurrentUser, history, resetTipSuccess }) {
+  useEffect(() => {
+    resetTipSuccess();
+  }, []);
+
   const onLoginFormSubmission = values => {
     axios
       .post(loginEndpoint, {

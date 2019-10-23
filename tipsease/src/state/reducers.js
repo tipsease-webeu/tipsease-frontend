@@ -54,6 +54,8 @@ export function tipSuccessReducer(tipSuccess = initialTipSuccess, action) {
       return true;
     case types.RESET_TIP_SUCCESS:
       return false;
+    case types.TASK_COMPLETED:
+      return true;
     default:
       return tipSuccess;
   }

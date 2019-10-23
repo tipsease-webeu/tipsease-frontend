@@ -124,3 +124,9 @@ export const resetTipSuccess = () => {
     type: types.RESET_TIP_SUCCESS,
   };
 };
+
+export const setTaskSucceded = () => {
+  return {
+    type: types.TASK_COMPLETED,
+  }
+}

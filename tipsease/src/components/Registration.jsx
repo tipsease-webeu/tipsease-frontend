@@ -1,12 +1,13 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
-import '../App.css';
+import "../App.css";
+import { Link } from "react-router-dom";
 
 // STATE
 
 import * as actionCreators from "../state/actionCreators";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 const initialValuesLogin = {
   username: "",
@@ -15,9 +16,10 @@ const initialValuesLogin = {
   photoUrl: ""
 };
 
-const userRegEndpoint = "https://build-tipsease.herokuapp.com/auth/users/register";
+const userRegEndpoint =
+  "https://build-tipsease.herokuapp.com/auth/users/register";
 
-function Registration({history}) {
+function Registration({ history, setTaskSucceded, tipSuccess }) {
   const onRegFormSubmission = values => {
     axios
       .post(userRegEndpoint, {
@@ -27,44 +29,51 @@ function Registration({history}) {
         photoUrl: values.photourl
       })
       .then(res => {
-        history.push('/');
+        setTaskSucceded();
       })
       .catch(error => {
-        alert(error.message)
+        alert(error.message);
       });
   };
   return (
-    <Formik
-      initialValues={initialValuesLogin}
-      onSubmit={onRegFormSubmission}
-      render={props => {
-        return (
-          <Form className="registration-form">
-            <label>
-              Full Name:
-              <Field name="fullname" type="text" />
-            </label>
-            <label>
-              Password:
-              <Field name="password" type="password" />
-            </label>
-            <label>
-              User Name:
-              <Field name="username" type="text" />
-            </label>
-            {/* <label>
-              Worker Type:
-              <Field name="text" type="text" />
-            </label> */}
-            <label>
-              Photo URL:
-              <Field name="photourl" type="text" />
-            </label>
-            <button type="submit">Sign Up</button>
-          </Form>
-        );
-      }}
-    />
+    <>
+      {tipSuccess ? (
+        <section className="tip-message">
+          <h2>
+            Thank you! You have succesfully registered. You can now{" "}
+            <Link to="/login">Log In</Link>
+          </h2>
+        </section>
+      ) : null}
+
+      <Formik
+        initialValues={initialValuesLogin}
+        onSubmit={onRegFormSubmission}
+        render={props => {
+          return (
+            <Form className="registration-form">
+              <label>
+                Full Name:
+                <Field name="fullname" type="text" />
+              </label>
+              <label>
+                Password:
+                <Field name="password" type="password" />
+              </label>
+              <label>
+                User Name:
+                <Field name="username" type="text" />
+              </label>
+              <label>
+                Photo URL:
+                <Field name="photourl" type="text" />
+              </label>
+              <button type="submit">Sign Up</button>
+            </Form>
+          );
+        }}
+      />
+    </>
   );
 }
 
