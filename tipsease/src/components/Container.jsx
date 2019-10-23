@@ -66,7 +66,7 @@ function Container({
 
   const sortScore = (field, type) => {
     const sortedArrayWorkers = listServiceWorkers.sort((a, b) => {
-      return parseFloat(a[field]) - parseFloat(b[field]);
+      return parseInt(a[field]) - parseInt(b[field]);
     });
     // sortListWorkers(sortedArrayWorkers);
     console.log(sortedArrayWorkers)
