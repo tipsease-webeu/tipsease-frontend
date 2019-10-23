@@ -129,6 +129,28 @@ function WorkerCard({
             }}
           />
         </div>
+        <div className="tip-form">
+          <Formik
+            validationSchema={validationSchema}
+            initialValues={initialValueTip}
+            // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+            onSubmit={onAddTip}
+            render={props => {
+              return (
+                <Form>
+                  <div className="input-form">
+                    <label htmlFor="stars">Input amount in EUR: </label>
+                    <Field name="stars" type="number" id="stars" />
+                  </div>
+                  <div className="validation-field">
+                    <ErrorMessage name="stars" component="div" />
+                  </div>
+                  <button>Rate</button>
+                </Form>
+              );
+            }}
+          />
+        </div>
       </section>
       {
         tipSuccess ? (
