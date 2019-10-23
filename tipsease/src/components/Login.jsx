@@ -46,7 +46,7 @@ function Login({ getCurrentUser, history, resetTipSuccess }) {
     resetTipSuccess();
   }, []);
 
-  const onLoginFormSubmission = values => {
+  const onLoginFormSubmission = (values, action) => {
     axios
       .post(loginEndpoint, {
         username: values.username,
@@ -59,6 +59,7 @@ function Login({ getCurrentUser, history, resetTipSuccess }) {
         history.push("/");
       })
       .catch(error => {
+        action.resetForm();
         alert(error.message);
       });
   };
