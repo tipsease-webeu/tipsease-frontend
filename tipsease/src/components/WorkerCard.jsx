@@ -154,7 +154,7 @@ function WorkerCard({
         </div>
       </section>
       <section>
-        <Link to="/" onClick={() => resetTipSuccess()}>
+        <Link to="/app/home" onClick={() => resetTipSuccess()}>
           Back
         </Link>
       </section>

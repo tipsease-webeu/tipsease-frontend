@@ -26,7 +26,7 @@ const masterReducer = combineReducers({
   listServiceWorkers: reducers.listServiceWorkersReducer,
   tipSuccess: reducers.tipSuccessReducer,
   loginError: reducers.loginErrorReducer,
-  error: reducers.errorReducer,
+  error: reducers.errorReducer
 });
 
 const store = createStore(
@@ -52,12 +52,12 @@ function App(props) {
   return (
     <StyledApp className="App">
       <Provider store={store}>
-        <Route exact path='/' component={MarketingPage} />
+        <Route exact path="/" component={MarketingPage} />
         <section className="navbar">
-          <PrivateRoute path='/app' component={NavBar} />
+          <PrivateRoute path="/app" component={NavBar} />
         </section>
         <section className="content">
-          <Route path="/login" component={Login} />
+          <LoginRedirectRoute path="/login" component={Login} />
           <Route path="/register" component={Registration} />
           <PrivateRoute exact path="/app/home" component={Container} />
           <PrivateRoute path="/app/profile" component={Profile} />
@@ -76,6 +76,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         <Component {...props} />
       ) : (
         <Redirect to="/login" />
+      )
+    }
+  />
+);
+
+const LoginRedirectRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("authorization") ? (
+        <Redirect to="/app/home" />
+      ) : (
+        <Component {...props} />
       )
     }
   />

@@ -27,16 +27,16 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
   const logout = e => {
     localStorage.clear();
     clearCurrentUser();
-    history.replace("/");
+    history.replace("/login");
   };
 
   return (
 <StyledNavBar>
       <h1>Tipsease</h1>
-      <NavLink to="/">
+      <NavLink to="/app/home">
         <h2>Home</h2>
       </NavLink>
-      <NavLink to="/profile">
+      <NavLink to="/app/profile">
         <h2>Profile</h2>
       </NavLink>
       <h2 onClick={logout} className="action-button-big">

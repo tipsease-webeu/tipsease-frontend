@@ -66,7 +66,7 @@ function Login({
         clearError();
         localStorage.setItem("authorization", res.data.token);
         getCurrentUser(res.data.userInfo);
-        history.push("/");
+        history.push("/app/home");
       })
       .catch(error => {
         activateErrorLogin();
