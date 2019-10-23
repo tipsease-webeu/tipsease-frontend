@@ -60,3 +60,30 @@ export function tipSuccessReducer(tipSuccess = initialTipSuccess, action) {
       return tipSuccess;
   }
 }
+
+const initialLoginError = false;
+
+export function loginErrorReducer(loginError = initialLoginError, action) {
+  switch (action.type) {
+    case types.SET_LOGIN_ERROR:
+      return true;
+    case types.CLEAR_LOGIN_ERROR:
+      return false;
+    default:
+      return loginError;
+  }
+}
+
+const initialErrorMessage = null;
+
+export function errorMessageReducer(
+  errorMessage = initialErrorMessage,
+  action
+) {
+  switch (action.type) {
+    case types.SET_ERROR_MESSAGE:
+      return action.payload;
+    default:
+      return errorMessage;
+  }
+}

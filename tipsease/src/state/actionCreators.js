@@ -130,3 +130,16 @@ export const setTaskSucceded = () => {
     type: types.TASK_COMPLETED,
   }
 }
+
+export const activateErrorLogin = () => {
+  return {
+    type: types.SET_LOGIN_ERROR,
+  }
+}
+
+export const setErrorMessage = errorMessage => {
+  return {
+    type: types.SET_ERROR_MESSAGE,
+    payload: errorMessage
+  }
+}

@@ -41,7 +41,15 @@ const StyledForm = styled(Form)`
   }
 `;
 
-function Login({ getCurrentUser, history, resetTipSuccess }) {
+function Login({
+  getCurrentUser,
+  history,
+  resetTipSuccess,
+  activateErrorLogin,
+  loginError,
+  setErrorMessage,
+  errorMessage
+}) {
   useEffect(() => {
     resetTipSuccess();
   }, []);
@@ -59,12 +67,18 @@ function Login({ getCurrentUser, history, resetTipSuccess }) {
         history.push("/");
       })
       .catch(error => {
+        activateErrorLogin();
         action.resetForm();
-        alert(error.message);
+        setErrorMessage(error.response.data.message);
       });
   };
   return (
     <>
+      {loginError ? (
+        <section>
+          <h2>{errorMessage}. Please try again.</h2>
+        </section>
+      ) : null}
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValuesLogin}
