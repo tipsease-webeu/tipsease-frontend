@@ -5,6 +5,10 @@ import * as yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// COMPONENTS
+
+import Title from "./Title";
+
 // STATE
 
 import * as actionCreators from "../state/actionCreators";
@@ -30,7 +34,7 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: center;
   width: 50%;
-  margin: 10% auto 0;
+  margin: 50px auto 0;
   label {
     font-size: 2rem;
   }
@@ -76,6 +80,7 @@ function Login({
   };
   return (
     <>
+      <Title />
       {error[0] ? (
         <section>
           <h2>{error[1]}. Please try again.</h2>
@@ -103,7 +108,8 @@ function Login({
       />
       <section>
         <p>
-          If you are not registered, please sign up <Link to="/register">here</Link>
+          If you are not registered, please sign up{" "}
+          <Link to="/register">here</Link>
         </p>
       </section>
     </>

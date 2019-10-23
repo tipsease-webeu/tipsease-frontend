@@ -2,6 +2,10 @@ import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
+// COMPONENTS
+
+import Title from "./Title";
+
 // STATE
 
 import { connect } from "react-redux";
@@ -31,8 +35,8 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
   };
 
   return (
-<StyledNavBar>
-      <h1>Tipsease</h1>
+    <StyledNavBar>
+      <Title />
       <NavLink to="/app/home">
         <h2>Home</h2>
       </NavLink>
