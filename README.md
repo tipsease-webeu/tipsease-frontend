@@ -49,7 +49,17 @@ Get rewarded for your efforts instantly.
 ### Frameworks - Libraries
 
 #### What 3rd party frameworks/libraries are you considering using? 
-Styled-Components, Axios, React, Redux, React-Redux, Redux-Thunk, React-router-dom, Formik, Yup, Less, less-watch-compiler
+ - Styled-Components 
+ - Axios
+ - React
+ - Redux
+ - React-Redux
+ - Redux-Thunk
+ - React-router-dom
+ - Formik
+ - Yup
+ - Less
+ - less-watch-compiler
 
 #### Do APIs require you to contact its maintainer to gain access?
 No
