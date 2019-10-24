@@ -309,6 +309,10 @@ align-items: center;
 justify-content: center;
 }
 
+.button.action {
+  width: 100px;
+}
+
 .service-workers {
 padding: 30px 0;
 display: flex;
