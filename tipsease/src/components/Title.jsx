@@ -15,7 +15,7 @@ const StyledLink = styled(Link)`
 export default function Title() {
   return (
     <div>
-      <StyledLink to="/">
+      <StyledLink to="/" className="blue">
         <h1>Tipsease...</h1>
         <h3>I tip, you tip, everyone tips!</h3>
       </StyledLink>
