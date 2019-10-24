@@ -151,7 +151,7 @@ function WorkerCard({
                   <section>
                     <label htmlFor="amount">Input amount in EUR: </label>
                     <Field name="amount" type="number" id="amount" min="1" />
-                    <ErrorMessage name="amount" component="div" />
+                    <ErrorMessage name="amount" component="div" className='validation-message'/>
                   </section>
                   <div className="button action small round">
                     <button type="submit">Tip</button>
