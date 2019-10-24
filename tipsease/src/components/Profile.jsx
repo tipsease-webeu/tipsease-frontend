@@ -5,10 +5,16 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-function Profile(props) {
+function Profile({currentUser}) {
   return (
     <div>
-      <div>Hellofrom profile</div>
+      <div>
+          <ul>
+              <li>{currentUser.fullName}</li>
+              <li>{currentUser.username}</li>
+              <li>{currentUser.photoUrl}</li>
+          </ul>
+      </div>
       <Link to="/app/home">back</Link>
       <Link to="/app/profile/edit">Edit profile</Link>
     </div>
