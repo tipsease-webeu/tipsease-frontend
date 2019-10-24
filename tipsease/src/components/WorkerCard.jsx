@@ -46,12 +46,13 @@ const StyledCard = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem;
+    /* margin: 2rem; */
     border-bottom: 0.5px solid gray;
     padding: 2rem;
     .tip-form {
       display: flex;
       flex-direction: row;
+      justify-content: center;
       align-items: center;
       font-size: 1.5rem;
       width: 50%;
@@ -98,7 +99,7 @@ const StyledCard = styled.div`
   }
   .tip-message {
     color: red;
-    margin: 2rem;
+    /* margin: 2rem; */
     border-bottom: 1px solid gray;
     display: flex;
     flex-direction: row;
