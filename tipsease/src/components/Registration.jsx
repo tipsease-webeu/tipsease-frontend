@@ -74,7 +74,7 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
       ) : null}
 
       <Formik
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         initialValues={initialValuesLogin}
         onSubmit={onRegFormSubmission}
         render={props => {
@@ -98,8 +98,8 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
               </label>
               <label>
                 Photo URL:
-                <Field name="photourl" type="text" />
-                <ErrorMessage name="photourl" component="div" />
+                <Field name="photoUrl" type="text" />
+                <ErrorMessage name="photoUrl" component="div" />
                 
               </label>
               <button type="submit">Sign Up</button>
