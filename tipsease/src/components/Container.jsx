@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // COMPONENTS
 
@@ -18,6 +19,12 @@ const StyledContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+  }
+  .sorting-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin:0.5rem 2rem;
   }
   .header-table {
     display: flex;
@@ -79,19 +86,23 @@ function Container({
       <section className="header-container">
         <h2>Service Workers</h2>
       </section>
-      <section>
-        <button onClick={() => sortAlpha("fullName", "asc")}>
-          Sort by name ASC
-        </button>
-        <button onClick={() => sortAlpha("fullName", "desc")}>
-          Sort by name DESC
-        </button>
-        <button onClick={() => sortScore("rating", "asc")}>
-          Sort by rating score ASC
-        </button>
-        <button onClick={() => sortScore("rating", "desc")}>
-          Sort by rating score DESC
-        </button>
+      <section className="sorting-options">
+        <span>Sort by:&nbsp;</span>
+        <Link to="#" onClick={() => sortAlpha("fullName", "asc")}>
+          name (asc)
+        </Link>
+        <span>&nbsp;|&nbsp;</span>
+        <Link to="#" onClick={() => sortAlpha("fullName", "desc")}>
+          name (desc)
+        </Link>
+        <span>&nbsp;|&nbsp;</span>
+        <Link to="#" onClick={() => sortScore("rating", "asc")}>
+          rating (asc)
+        </Link>
+        <span>&nbsp;|&nbsp;</span>
+        <Link to="#" onClick={() => sortScore("rating", "desc")}>
+          rating (desc)
+        </Link>
       </section>
       <section>
         <section className="header-table">
