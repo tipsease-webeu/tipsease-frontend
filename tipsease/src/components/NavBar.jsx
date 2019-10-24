@@ -24,7 +24,7 @@ const StyledNavBar = styled.nav`
   }
 `;
 
-function NavBar({ history, clearCurrentUser, currentUser }) {
+function NavBar({ history, clearCurrentUser, currentUser, match }) {
   // LOGOUT FUNCTIONALITY
 
   const logout = e => {
