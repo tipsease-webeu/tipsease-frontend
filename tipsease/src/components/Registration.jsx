@@ -49,19 +49,15 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
   useEffect(() => {
     clearError();
   }, []);
+
   const onRegFormSubmission = values => {
     axios
-      .post(userRegEndpoint, {
-        fullName: values.fullname,
-        username: values.username,
-        password: values.password,
-        photoUrl: values.photourl
-      })
+      .post(userRegEndpoint, values)
       .then(res => {
         setTaskSucceded();
       })
       .catch(error => {
-        alert(error.message);
+        alert(error.response.data.message);
       });
   };
   return (
@@ -77,7 +73,7 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
       ) : null}
 
       <Formik
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         initialValues={initialValuesLogin}
         onSubmit={onRegFormSubmission}
         render={props => {
