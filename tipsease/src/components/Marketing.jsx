@@ -14,13 +14,12 @@ export default function Marketing() {
       <body>
         <section>
           <nav>
-            <h3 className="logo">
-              <a href="#">Tipsease</a>
-            </h3>
+            <h2 className="logo">Tipsease</h2>
             <ul className="nav-list">
               <li className="list-item">
                 <a href="/register">Register</a>
               </li>
+              <li className="list-item">|</li>
               <li className="list-item">
                 <a href="/login">Login</a>
               </li>
@@ -30,7 +29,7 @@ export default function Marketing() {
         <section className="banner">
           <div className="banner-header">
             <h1>The Tipping App For A Cashless World</h1>
-            <div className='button'>
+            <div className="button">
               <span>Get Started</span>
             </div>
           </div>
