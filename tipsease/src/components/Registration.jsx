@@ -50,7 +50,7 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: flex-start;
   width: 50%;
-  margin: 50px auto 0;
+  margin: 20px auto 0;
   .input-group {
     display: flex;
     flex-direction: row;
@@ -93,7 +93,7 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
   };
   return (
     <>
-      <Title />
+      <Title className="title" />
       {tipSuccess ? (
         <section className="tip-message">
           <h2>
