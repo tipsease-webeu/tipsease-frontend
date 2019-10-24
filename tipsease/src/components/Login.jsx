@@ -19,8 +19,7 @@ const initialValuesLogin = {
   password: ""
 };
 
-const loginEndpoint =
- "https://build-tipsease.herokuapp.com/auth/users/login";
+const loginEndpoint = "https://build-tipsease.herokuapp.com/auth/users/login";
 
 const validationSchema = yup.object().shape({
   username: yup
@@ -100,9 +99,10 @@ function Login({
               <label htmlFor="password">password:</label>
               <Field name="password" type="password" id="password" />
               <ErrorMessage name="password" component="div" />
-              <button type="submit" className="action-button-big">
-                Login
-              </button>
+              <div className="button action blue" type="submit">
+                <span>Login</span>
+              </div>
+              {/* <button className="action-button-big">Login</button> */}
             </StyledForm>
           );
         }}

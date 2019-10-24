@@ -310,9 +310,14 @@ justify-content: center;
 }
 
 .button.action {
-  width: 100px;
   background: #F9A061;
   color: white;
+}
+.button.action.small {
+  width: 100px;
+}
+.button.action.blue {
+  background: #6194f9;
 }
 
 .service-workers {
