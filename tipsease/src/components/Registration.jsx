@@ -48,6 +48,13 @@ const userRegEndpoint =
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   width: 50%;
   margin: 20px auto 0;
@@ -110,36 +117,40 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
         render={props => {
           return (
             <StyledForm className="registration-form">
-              <div className="input-group">
-                <label htmlFor="fullName">Full Name:</label>
-                <div className="field-group">
-                  <Field name="fullName" type="text" id="fullName" />
-                  <ErrorMessage name="fullName" component="div" />
+              <StyledSection>
+                <div className="input-group">
+                  <label htmlFor="fullName">Full Name:</label>
+                  <div className="field-group">
+                    <Field name="fullName" type="text" id="fullName" />
+                    <ErrorMessage name="fullName" component="div" />
+                  </div>
                 </div>
-              </div>
-
-              <div className="input-group">
-                <label htmlFor="password">Password:</label>
-                <div className="field-group">
-                  <Field name="password" type="password" id="password" />
-                  <ErrorMessage name="password" component="div" />
+                <div className="input-group">
+                  <label htmlFor="password">Password:</label>
+                  <div className="field-group">
+                    <Field name="password" type="password" id="password" />
+                    <ErrorMessage name="password" component="div" />
+                  </div>
                 </div>
-              </div>
-              <div className="input-group">
-                <label htmlFor="username">User Name:</label>
-                <div className="field-group">
-                  <Field name="username" type="text" id="username" />
-                  <ErrorMessage name="username" component="div" />
+                <div className="input-group">
+                  <label htmlFor="username">User Name:</label>
+                  <div className="field-group">
+                    <Field name="username" type="text" id="username" />
+                    <ErrorMessage name="username" component="div" />
+                  </div>
                 </div>
-              </div>
-              <div className="input-group">
-                <label htmlFor="photoUrl">Photo URL:</label>
-                <div className="field-group">
-                  <Field name="photoUrl" type="text" id="photoUrl" />
-                  <ErrorMessage name="photoUrl" component="div" />
+                <div className="input-group">
+                  <label htmlFor="photoUrl">Photo URL:</label>
+                  <div className="field-group">
+                    <Field name="photoUrl" type="text" id="photoUrl" />
+                    <ErrorMessage name="photoUrl" component="div" />
+                  </div>
                 </div>
+              </StyledSection>
+              <div className="button action blue">
+                <button type="submit">Signup</button>
               </div>
-              <button type="submit">Sign Up</button>
+              {/* <button type="submit">Sign Up</button> */}
             </StyledForm>
           );
         }}
