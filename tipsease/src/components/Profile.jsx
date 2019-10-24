@@ -1,24 +1,58 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 // STATE
 
 import { connect } from "react-redux";
 
+const StyledDiv = styled("div")`
+  .body-worker-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    div {
+      width: 50%;
+    }
+
+    .img-container {
+      width: 20%;
+    }
+    img {
+      width: 100%;
+      border-radius: 100%;
+    }
+    .worker-details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100%;
+      h3 {
+        margin: 1rem;
+      }
+    }
+  }
+`;
+
 function Profile({ currentUser }) {
   return (
     <div>
-      <div>
-        <ul>
-          <div>
+      <StyledDiv>
+        <section className="body-worker-card">
+          <div className="img-container">
             <img src={currentUser.photoUrl} alt="current-user-profile-pic" />
           </div>
-          <li>{currentUser.fullName}</li>
-          <li>{currentUser.username}</li>
-        </ul>
-      </div>
+          <div className="worker-details">
+            <h3>{currentUser.fullName}</h3>
+            <h3>{currentUser.username}</h3>
+          </div>
+          <Link to="/app/profile/edit">Edit profile</Link>
+        </section>
+      </StyledDiv>
       <Link to="/app/home">back</Link>
-      <Link to="/app/profile/edit">Edit profile</Link>
     </div>
   );
 }
