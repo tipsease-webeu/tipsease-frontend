@@ -48,20 +48,33 @@ const userRegEndpoint =
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 50%;
   margin: 50px auto 0;
   .input-group {
     display: flex;
     flex-direction: row;
-  }
-  label {
-    font-size: 2rem;
+    border: 1px solid red;
+    height: 75px;
+    margin-bottom: 20px;
+    align-items: center;
+    width: 750px;
+    label {
+      font-size: 2rem;
+      width: 30%;
+    }
+    .field-group {
+      height: 50px;
+      width: 400px;
+      width: 70%;
+      border: 1px solid purple;
+    }
   }
   input {
-    font-size: 3rem;
     margin: 0.5rem;
     padding: 0.75rem;
+    font-size: 1rem;
+    width: 334px;
   }
 `;
 
@@ -102,7 +115,7 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
             <StyledForm className="registration-form">
               <div className="input-group">
                 <label htmlFor="fullName">Full Name:</label>
-                <div>
+                <div className="field-group">
                   <Field name="fullName" type="text" id="fullName" />
                   <ErrorMessage name="fullName" component="div" />
                 </div>
