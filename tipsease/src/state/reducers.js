@@ -13,7 +13,12 @@ export function countReducer(count = initialCount, action) {
   }
 }
 
-const initialUser = {};
+const initialUser = {
+  fullName: 'this is a test',
+  username: 'testtest',
+  password: '12345',
+  photoUrl: 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png',
+};
 
 export function currentUserReducer(currentUser = initialUser, action) {
   switch (action.type) {
