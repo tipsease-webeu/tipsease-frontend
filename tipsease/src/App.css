@@ -180,10 +180,6 @@ h2 {
   padding: 1rem;
 }
 
-h3 {
-  font-size: 1.5rem;
-}
-
 h4 {
   font-size: 1rem;
 }
@@ -214,7 +210,12 @@ a {
   color: #f9a061;
 }
 
-a.white {
+a.white h1 {
+  color: white;
+  font-size: 4rem;
+}
+
+a.white h3 {
   color: white;
 }
 
@@ -239,7 +240,7 @@ h3 {
   margin-bottom: 1em;
   margin-left: 0;
   margin-right: 0;
-  font-size: 22px;
+  font-size: 1.5rem;
 }
 
 p {
