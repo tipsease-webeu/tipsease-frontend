@@ -10,12 +10,11 @@ function Profile({ currentUser }) {
     <div>
       <div>
         <ul>
-          <li>{currentUser.fullName}</li>
-          <li>{currentUser.username}</li>
-          <li>{currentUser.photoUrl}</li>
           <div>
             <img src={currentUser.photoUrl} alt="current-user-profile-pic" />
           </div>
+          <li>{currentUser.fullName}</li>
+          <li>{currentUser.username}</li>
         </ul>
       </div>
       <Link to="/app/home">back</Link>

@@ -132,6 +132,14 @@ table {
 
 /* END OF RESET */
 
+/* BOX SIZING EFFECT */
+
+* {
+  box-sizing: border-box;
+}
+
+/* BOX SIZING EFFECT */
+
 .App {
   text-align: center;
   font-family: "Oswald", sans-serif;

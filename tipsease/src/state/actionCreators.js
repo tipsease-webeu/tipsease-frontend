@@ -76,6 +76,7 @@ const tipServiceWorkersApi =
   "https://build-tipsease.herokuapp.com/serviceWorkers/pay";
 
 export const onSubmitTip = (amount, id, userName) => dispatch => {
+
   withAuth()
     .put(`${tipServiceWorkersApi}/${id}`, {
       payment: amount,

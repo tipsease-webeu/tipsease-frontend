@@ -4,6 +4,7 @@ import axios from "axios";
 import "../App.css";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
+import styled from "styled-components";
 
 // COMPONENTS
 
@@ -44,6 +45,36 @@ const validationSchema = yup.object().shape({
 const userRegEndpoint =
   "https://build-tipsease.herokuapp.com/auth/users/register";
 
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  margin: 20px auto 0;
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+    margin-bottom: 20px;
+    align-items: center;
+    width: 750px;
+    label {
+      font-size: 2rem;
+      width: 30%;
+    }
+    .field-group {
+      height: 50px;
+      width: 400px;
+      width: 70%;
+      input {
+        padding: 0.75rem;
+        font-size: 1rem;
+        width: 100%;
+      }
+    }
+  }
+`;
+
 function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
   useEffect(() => {
     clearError();
@@ -58,11 +89,11 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
       .catch(error => {
         alert(error.response.data.message);
       });
-      actions.resetForm();
+    actions.resetForm();
   };
   return (
     <>
-      <Title />
+      <Title className="title" />
       {tipSuccess ? (
         <section className="tip-message">
           <h2>
@@ -78,31 +109,38 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
         onSubmit={onRegFormSubmission}
         render={props => {
           return (
-            <Form className="registration-form">
-              <label>
-                Full Name:
-                <Field name="fullName" type="text" />
-                <ErrorMessage name="fullName" component="div" />
-              </label>
-              <label>
-                Password:
-                <Field name="password" type="password" />
-                <ErrorMessage name="password" component="div" />
-              </label>
-              <label>
-                User Name:
-                <Field name="username" type="text" />
-                <ErrorMessage name="username" component="div" />
+            <StyledForm className="registration-form">
+              <div className="input-group">
+                <label htmlFor="fullName">Full Name:</label>
+                <div className="field-group">
+                  <Field name="fullName" type="text" id="fullName" />
+                  <ErrorMessage name="fullName" component="div" />
+                </div>
+              </div>
 
-              </label>
-              <label>
-                Photo URL:
-                <Field name="photoUrl" type="text" />
-                <ErrorMessage name="photoUrl" component="div" />
-                
-              </label>
+              <div className="input-group">
+                <label htmlFor="password">Password:</label>
+                <div className="field-group">
+                  <Field name="password" type="password" id="password" />
+                  <ErrorMessage name="password" component="div" />
+                </div>
+              </div>
+              <div className="input-group">
+                <label htmlFor="username">User Name:</label>
+                <div className="field-group">
+                  <Field name="username" type="text" id="username" />
+                  <ErrorMessage name="username" component="div" />
+                </div>
+              </div>
+              <div className="input-group">
+                <label htmlFor="photoUrl">Photo URL:</label>
+                <div className="field-group">
+                  <Field name="photoUrl" type="text" id="photoUrl" />
+                  <ErrorMessage name="photoUrl" component="div" />
+                </div>
+              </div>
               <button type="submit">Sign Up</button>
-            </Form>
+            </StyledForm>
           );
         }}
       />
