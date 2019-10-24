@@ -39,7 +39,6 @@ const validationSchema = yup.object().shape({
     .string()
     .required()
     .min(5, "Too short")
-    .max(15, "Too long")
 });
 
 const userRegEndpoint =

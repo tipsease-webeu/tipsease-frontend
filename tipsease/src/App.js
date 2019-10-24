@@ -16,6 +16,7 @@ import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Container from "./components/Container";
 import WorkerCard from "./components/WorkerCard";
+import EditProfile from "./components/EditProfile";
 import Profile from "./components/Profile";
 import Registration from "./components/Registration";
 import Marketing from "./components/Marketing";
@@ -62,7 +63,8 @@ function App(props) {
           </section>
           <section className="content">
             <PrivateRoute exact path="/app/home" component={Container} />
-            <PrivateRoute path="/app/profile" component={Profile} />
+            <PrivateRoute path="/app/profile/edit" component={EditProfile} />
+            <PrivateRoute exact path="/app/profile" component={Profile} />
             <PrivateRoute
               path="/app/service-worker/:id"
               component={WorkerCard}
