@@ -38,16 +38,22 @@ function Profile({ currentUser }) {
     <div>
       <StyledDiv>
         <section className="greeting">
-          <h2>Hello <span style={{"border-bottom": "1px dashed gray" }}>{currentUser.fullName}</span>&nbsp;,</h2>
+          <h2>
+            Hello{" "}
+            <span style={{ "border-bottom": "1px dashed gray" }}>
+              {currentUser.fullName}
+            </span>
+            &nbsp;,
+          </h2>
         </section>
         <section className="body-worker-card">
           <div className="img-container">
             <img src={currentUser.photoUrl} alt="current-user-profile-pic" />
           </div>
-          {/* <div className="worker-details"> */}
+
           <h3>Full name:&nbsp; {currentUser.fullName}</h3>
           <h3>Username:&nbsp; {currentUser.username}</h3>
-          {/* </div> */}
+
           <Link to="/app/profile/edit" style={{ color: "white" }}>
             <div className="button action">Edit profile</div>
           </Link>
