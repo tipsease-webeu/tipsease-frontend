@@ -18,7 +18,8 @@ import Container from "./components/Container";
 import WorkerCard from "./components/WorkerCard";
 import Profile from "./components/Profile";
 import Registration from "./components/Registration";
-import MarketingPage from "./components/MarketingPage";
+import Marketing from "./components/Marketing";
+
 
 const masterReducer = combineReducers({
   count: reducers.countReducer,
@@ -67,7 +68,7 @@ function App(props) {
         </StyledApp>
         <LoginRedirectRoute path="/login" component={Login} />
         <Route path="/register" component={Registration} />
-        <Route exact path="/" component={MarketingPage} />
+        <Route exact path="/" component={Marketing} />
       </Provider>
     </div>
   );
