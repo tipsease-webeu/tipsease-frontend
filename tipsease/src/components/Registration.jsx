@@ -54,7 +54,6 @@ const StyledForm = styled(Form)`
   .input-group {
     display: flex;
     flex-direction: row;
-    border: 1px solid red;
     height: 75px;
     margin-bottom: 20px;
     align-items: center;
@@ -67,14 +66,12 @@ const StyledForm = styled(Form)`
       height: 50px;
       width: 400px;
       width: 70%;
-      border: 1px solid purple;
+      input {
+        padding: 0.75rem;
+        font-size: 1rem;
+        width: 100%;
+      }
     }
-  }
-  input {
-    margin: 0.5rem;
-    padding: 0.75rem;
-    font-size: 1rem;
-    width: 334px;
   }
 `;
 
@@ -123,21 +120,21 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
 
               <div className="input-group">
                 <label htmlFor="password">Password:</label>
-                <div>
+                <div className="field-group">
                   <Field name="password" type="password" id="password" />
                   <ErrorMessage name="password" component="div" />
                 </div>
               </div>
               <div className="input-group">
                 <label htmlFor="username">User Name:</label>
-                <div>
+                <div className="field-group">
                   <Field name="username" type="text" id="username" />
                   <ErrorMessage name="username" component="div" />
                 </div>
               </div>
               <div className="input-group">
                 <label htmlFor="photoUrl">Photo URL:</label>
-                <div>
+                <div className="field-group">
                   <Field name="photoUrl" type="text" id="photoUrl" />
                   <ErrorMessage name="photoUrl" component="div" />
                 </div>
