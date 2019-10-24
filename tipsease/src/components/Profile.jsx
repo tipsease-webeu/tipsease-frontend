@@ -35,7 +35,7 @@ function Profile({ currentUser, onEditProfile, history }) {
       onEditProfile(newValues, currentUser.id);
     }
     actions.resetForm();
-    history.push("/");
+    history.push("/app/home");
   };
 
   return (
