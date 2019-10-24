@@ -45,6 +45,8 @@ export function listServiceWorkersReducer(
       return listServiceWorkers.map(worker => {
         return worker.id !== action.payload.id ? worker : action.payload;
       });
+    case types.SORT_WORKERS:
+      return action.payload;
     default:
       return listServiceWorkers;
   }
@@ -88,5 +90,16 @@ export function errorReducer(error = initialError, action) {
       return [false, ""];
     default:
       return error;
+  }
+}
+
+const initialSorted = false;
+
+export function sortReducer(sorted = initialSorted, action) {
+  switch(action.type) {
+    case types.SORT_WORKERS:
+      return !sorted;
+    default:
+      return sorted;
   }
 }

@@ -12,3 +12,4 @@ export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const CLEAR_LOGIN_ERROR = 'CLEAR_LOGIN_ERROR';
 export const SET_ERROR = 'SET_ERROR';
 export const RESET_ERROR = 'RESET_ERROR';
+export const SORT_WORKERS = 'SORT_WORKERS';

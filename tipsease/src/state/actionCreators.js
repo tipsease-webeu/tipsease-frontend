@@ -144,32 +144,38 @@ export const onEditProfile = (values, id) => dispatch => {
 
 export const resetTipSuccess = () => {
   return {
-    type: types.RESET_TIP_SUCCESS,
+    type: types.RESET_TIP_SUCCESS
   };
 };
 
 export const setTaskSucceded = () => {
   return {
-    type: types.TASK_COMPLETED,
-  }
-}
+    type: types.TASK_COMPLETED
+  };
+};
 
 export const activateErrorLogin = () => {
   return {
-    type: types.SET_LOGIN_ERROR,
-  }
-}
+    type: types.SET_LOGIN_ERROR
+  };
+};
 
 export const setError = errorMessage => {
   return {
     type: types.SET_ERROR,
     payload: errorMessage
-  }
-}
+  };
+};
 
 export const clearError = () => {
   return {
-    type: types.RESET_ERROR,
-  }
-}
+    type: types.RESET_ERROR
+  };
+};
 
+export const sortListWorkers = data => {
+  return {
+    type: types.SORT_WORKERS,
+    payload: data
+  };
+};
