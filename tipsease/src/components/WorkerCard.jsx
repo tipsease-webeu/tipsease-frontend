@@ -106,7 +106,8 @@ function WorkerCard({
   history,
   tipSuccess,
   resetTipSuccess,
-  onSubmitRating
+  onSubmitRating,
+  arrayAvatars
 }) {
   const selectedWorker = listServiceWorkers.find(worker => {
     return worker.id === Number(match.params.id);
@@ -188,10 +189,17 @@ function WorkerCard({
           <img
             src={
               !selectedWorker.photoUrl
-                ? "http://saltlifetherapy.ie/wp-content/uploads/2018/11/no-photo-1.png"
+                ? arrayAvatars[
+                    Math.floor(Math.random() * Math.floor(arrayAvatars.length))
+                  ]
                 : selectedWorker.photoUrl
             }
-            onError={addDefaultSrc}
+            onError={e => {
+              e.target.src =
+                arrayAvatars[
+                  Math.floor(Math.random() * Math.floor(arrayAvatars.length))
+                ];
+            }}
             alt="profile-pic"
           />
         </div>
