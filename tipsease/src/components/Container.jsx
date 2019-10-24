@@ -103,6 +103,7 @@ function Container({
         <Link to="#" onClick={() => sortScore("rating", "desc")}>
           rating (desc)
         </Link>
+        
       </section>
       <section>
         <section className="header-table">

@@ -1,6 +1,6 @@
 import React from "react";
-import '../reset.css';
-import "../styles.css";
+// import '../reset.css';
+import "../App.css";
 import wallet from "../images/wallet.png";
 import car from "../images/car.png";
 import cash from "../images/cash-1.png";
