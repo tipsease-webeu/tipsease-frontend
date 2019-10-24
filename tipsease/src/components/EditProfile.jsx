@@ -24,6 +24,7 @@ function Profile({ currentUser, onEditProfile, history }) {
   const initialValuesProfile = {
     fullName: currentUser.fullName,
     username: currentUser.username,
+    photoUrl: currentUser.photoUrl,
     password: ""
   };
 
@@ -57,6 +58,11 @@ function Profile({ currentUser, onEditProfile, history }) {
                 Username:
                 <Field name="username" type="text" />
                 <ErrorMessage name="username" component="div" />
+              </label>
+              <label>
+                Photo profile URL:
+                <Field name="photoUrl" type="text" />
+                <ErrorMessage name="photoUrl" component="div" />
               </label>
               <label>
                 Password:
