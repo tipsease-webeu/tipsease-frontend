@@ -99,8 +99,8 @@ function Login({
               <label htmlFor="password">password:</label>
               <Field name="password" type="password" id="password" />
               <ErrorMessage name="password" component="div" />
-              <div className="button action blue" type="submit">
-                <span>Login</span>
+              <div className="button action blue" >
+                <button type="submit">Login</button>
               </div>
               {/* <button className="action-button-big">Login</button> */}
             </StyledForm>
