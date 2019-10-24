@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { Link } from "react-router-dom";
 
 // STATE
 
@@ -39,37 +40,40 @@ function Profile({ currentUser, onEditProfile, history }) {
   };
 
   return (
-    <Formik
-      validationSchema={validationSchema}
-      initialValues={initialValuesProfile}
-      onSubmit={onSubmitEditProfile}
-      render={props => {
-        return (
-          <Form>
-            <label>
-              Full Name:
-              <Field name="fullName" type="text" />
-              <ErrorMessage name="fullName" component="div" />
-            </label>
-            <label>
-              Username:
-              <Field name="username" type="text" />
-              <ErrorMessage name="username" component="div" />
-            </label>
-            <label>
-              Password:
-              <Field
-                name="password"
-                type="text"
-                placeholder="Type new password"
-              />
-              <ErrorMessage name="password" component="div" />
-            </label>
-            <button>Edit profile</button>
-          </Form>
-        );
-      }}
-    />
+    <>
+      <Formik
+        validationSchema={validationSchema}
+        initialValues={initialValuesProfile}
+        onSubmit={onSubmitEditProfile}
+        render={props => {
+          return (
+            <Form>
+              <label>
+                Full Name:
+                <Field name="fullName" type="text" />
+                <ErrorMessage name="fullName" component="div" />
+              </label>
+              <label>
+                Username:
+                <Field name="username" type="text" />
+                <ErrorMessage name="username" component="div" />
+              </label>
+              <label>
+                Password:
+                <Field
+                  name="password"
+                  type="text"
+                  placeholder="Type new password"
+                />
+                <ErrorMessage name="password" component="div" />
+              </label>
+              <button>Edit profile</button>
+            </Form>
+          );
+        }}
+      />
+      <Link to="/app/profile">back</Link>
+    </>
   );
 }
 

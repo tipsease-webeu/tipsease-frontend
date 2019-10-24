@@ -9,8 +9,8 @@ function Profile(props) {
   return (
     <div>
       <div>Hellofrom profile</div>
-      <Link to="/home">back</Link>
-      <Link to="/profile/edit">Edit profile</Link>
+      <Link to="/app/home">back</Link>
+      <Link to="/app/profile/edit">Edit profile</Link>
     </div>
   );
 }

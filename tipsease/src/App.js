@@ -64,7 +64,7 @@ function App(props) {
           <section className="content">
             <PrivateRoute exact path="/app/home" component={Container} />
             <PrivateRoute path="/app/profile/edit" component={EditProfile} />
-            <PrivateRoute path="/app/profile" component={Profile} />
+            <PrivateRoute exact path="/app/profile" component={Profile} />
             <PrivateRoute
               path="/app/service-worker/:id"
               component={WorkerCard}
