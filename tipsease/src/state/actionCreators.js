@@ -82,6 +82,7 @@ export const onSubmitTip = (amount, id, userName) => dispatch => {
       senderUsername: userName
     })
     .then(res => {
+      debugger
       dispatch(fetchServiceWorker(id, addTip));
     })
     .catch(error => {

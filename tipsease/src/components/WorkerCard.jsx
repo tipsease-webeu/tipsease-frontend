@@ -68,6 +68,7 @@ const StyledCard = styled.div`
     div {
       width: 50%;
     }
+
     .img-container {
       width: 20%;
     }
@@ -105,7 +106,8 @@ function WorkerCard({
   history,
   tipSuccess,
   resetTipSuccess,
-  onSubmitRating
+  onSubmitRating,
+  arrayAvatars
 }) {
   const selectedWorker = listServiceWorkers.find(worker => {
     return worker.id === Number(match.params.id);
@@ -185,8 +187,19 @@ function WorkerCard({
       <section className="body-worker-card">
         <div className="img-container">
           <img
-            src={selectedWorker.photoUrl}
-            onError={addDefaultSrc}
+            src={
+              !selectedWorker.photoUrl
+                ? arrayAvatars[
+                    Math.floor(Math.random() * Math.floor(arrayAvatars.length))
+                  ]
+                : selectedWorker.photoUrl
+            }
+            onError={e => {
+              e.target.src =
+                arrayAvatars[
+                  Math.floor(Math.random() * Math.floor(arrayAvatars.length))
+                ];
+            }}
             alt="profile-pic"
           />
         </div>

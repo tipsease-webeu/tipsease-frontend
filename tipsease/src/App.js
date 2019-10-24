@@ -28,7 +28,9 @@ const masterReducer = combineReducers({
   tipSuccess: reducers.tipSuccessReducer,
   loginError: reducers.loginErrorReducer,
   error: reducers.errorReducer,
-  sorted: reducers.sortReducer
+  sorted: reducers.sortReducer,
+  ownTipHistory: reducers.ownTipHistoryReducer,
+  arrayAvatars: reducers.arrayAvatarsReducer
 });
 
 const store = createStore(

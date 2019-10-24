@@ -96,10 +96,39 @@ export function errorReducer(error = initialError, action) {
 const initialSorted = false;
 
 export function sortReducer(sorted = initialSorted, action) {
-  switch(action.type) {
+  switch (action.type) {
     case types.SORT_WORKERS:
       return !sorted;
     default:
       return sorted;
+  }
+}
+
+const initialOwnTipHistory = [];
+
+export function ownTipHistoryReducer(
+  ownTipHistory = initialOwnTipHistory,
+  action
+) {
+  switch (action.type) {
+    case types.ADD_TIP:
+      return [...ownTipHistory, action.payload];
+    default:
+      return ownTipHistory;
+  }
+}
+
+const initialArrayAvatars = [
+  "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
+  "https://cdn2.iconfinder.com/data/icons/circle-avatars-1/128/039_girl_avatar_profile_woman_headband-512.png"
+];
+
+export function arrayAvatarsReducer(
+  arrayAvatars = initialArrayAvatars,
+  action
+) {
+  switch (action.type) {
+    default:
+      return arrayAvatars;
   }
 }
