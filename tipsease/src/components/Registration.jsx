@@ -50,7 +50,7 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
     clearError();
   }, []);
 
-  const onRegFormSubmission = values => {
+  const onRegFormSubmission = (values, actions) => {
     axios
       .post(userRegEndpoint, values)
       .then(res => {
@@ -59,6 +59,7 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
       .catch(error => {
         alert(error.response.data.message);
       });
+      actions.resetForm();
   };
   return (
     <>
