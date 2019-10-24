@@ -45,11 +45,14 @@ function NavBar({ history, clearCurrentUser, currentUser }) {
         <NavLink to="/app/profile">
           <h2>Profile</h2>
         </NavLink>
-        <h2 onClick={logout} className="action-button-big">
+        {/* <h2 onClick={logout} className="action-button-big">
           Log out
-        </h2>
+        </h2> */}
       </section>
       <section>
+        <div className="button" type="submit" onClick={logout}>
+          <span>Logout</span>
+        </div>
         <div>
           <p>Need help?</p>
           <p>hello@tipsease.com</p>
