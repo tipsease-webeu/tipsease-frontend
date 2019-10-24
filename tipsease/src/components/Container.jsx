@@ -14,6 +14,12 @@ import { connect } from "react-redux";
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
+  .greeting {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
   .header-container {
     display: flex;
     flex-direction: row;
@@ -24,7 +30,7 @@ const StyledContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin:0.5rem 2rem;
+    margin: 0.5rem 2rem;
   }
   .header-table {
     display: flex;
@@ -49,7 +55,8 @@ const header = [
 function Container({
   fetchServiceWorkers,
   listServiceWorkers,
-  sortListWorkers
+  sortListWorkers,
+  currentUser
 }) {
   useEffect(() => {
     fetchServiceWorkers();
@@ -83,6 +90,15 @@ function Container({
 
   return (
     <StyledContainer>
+      <section className="greeting">
+        <h2>
+          Hello{" "}
+          <span style={{ "border-bottom": "1px dashed gray" }}>
+            {currentUser.fullName}
+          </span>
+          &nbsp;,
+        </h2>
+      </section>
       <section className="header-container">
         <h2>Service Workers</h2>
       </section>
@@ -103,7 +119,6 @@ function Container({
         <Link to="#" onClick={() => sortScore("rating", "desc")}>
           rating (desc)
         </Link>
-        
       </section>
       <section>
         <section className="header-table">
