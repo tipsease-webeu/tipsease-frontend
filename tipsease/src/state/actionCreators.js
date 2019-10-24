@@ -54,11 +54,18 @@ export const addTip = serviceWorker => {
   };
 };
 
-const fetchServiceWorker = id => dispatch => {
+export const addRating = serviceWorker => {
+  return {
+    type: types.ADD_RATING,
+    payload: serviceWorker
+  };
+};
+
+const fetchServiceWorker = (id, typeAction) => dispatch => {
   withAuth()
     .get(`https://build-tipsease.herokuapp.com/serviceWorkers/${id}`)
     .then(res => {
-      dispatch(addTip(res.data));
+      dispatch(typeAction(res.data));
     })
     .catch(error => {
       alert(error.message);
@@ -75,7 +82,23 @@ export const onSubmitTip = (amount, id, userName) => dispatch => {
       senderUsername: userName
     })
     .then(res => {
-      dispatch(fetchServiceWorker(id));
+      dispatch(fetchServiceWorker(id, addTip));
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+};
+
+const ratingServiceWorkersApi =
+  "https://build-tipsease.herokuapp.com/serviceWorkers/rate";
+
+export const onSubmitRating = (stars, id) => dispatch => {
+  withAuth()
+    .put(`${ratingServiceWorkersApi}/${id}`, {
+      rating: stars
+    })
+    .then(res => {
+      dispatch(fetchServiceWorker(id, addRating));
     })
     .catch(error => {
       alert(error.message);
@@ -149,3 +172,4 @@ export const clearError = () => {
     type: types.RESET_ERROR,
   }
 }
+

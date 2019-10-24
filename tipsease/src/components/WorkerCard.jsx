@@ -13,13 +13,25 @@ import * as actionCreators from "../state/actionCreators";
 
 import { addDefaultSrc } from "../helpers/helpers";
 
-const initialValueTip = 0;
+const initialValueTip = {
+  amount: 0
+};
 
-const validationSchema = yup.object().shape({
+const initialValueRating = {
+  stars: 0
+};
+
+const validationSchemaTip = yup.object().shape({
   amount: yup
     .number()
     .required("Amount required")
-    .positive("No negative amounts allowed")
+    .integer("Number needs to be an integer")
+});
+
+const validationSchemaRating = yup.object().shape({
+  stars: yup
+    .number()
+    .required("Amount required")
     .integer("Number needs to be an integer")
 });
 
@@ -92,7 +104,8 @@ function WorkerCard({
   onSubmitTip,
   history,
   tipSuccess,
-  resetTipSuccess
+  resetTipSuccess,
+  onSubmitRating
 }) {
   const selectedWorker = listServiceWorkers.find(worker => {
     return worker.id === Number(match.params.id);
@@ -103,13 +116,18 @@ function WorkerCard({
     onSubmitTip(values.amount, selectedWorker.id, currentUser.username);
   };
 
+  const onAddRating = (values, action) => {
+    action.resetForm();
+    onSubmitRating(values.stars, selectedWorker.id);
+  };
+
   return (
     <StyledCard>
       <section className="header-worker-card">
         <h2>{selectedWorker.fullName}</h2>
         <div className="tip-form">
           <Formik
-            validationSchema={validationSchema}
+            validationSchema={validationSchemaTip}
             initialValues={initialValueTip}
             // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
             onSubmit={onAddTip}
@@ -118,25 +136,51 @@ function WorkerCard({
                 <Form>
                   <div className="input-form">
                     <label htmlFor="amount">Input amount in EUR: </label>
-                    <Field name="amount" type="number" id="amount" />
+                    <Field name="amount" type="number" id="amount" min="1" />
                   </div>
                   <div className="validation-field">
                     <ErrorMessage name="amount" component="div" />
                   </div>
-                  <button>Tip</button>
+                  <button type="submit">Tip</button>
+                </Form>
+              );
+            }}
+          />
+        </div>
+        <div className="tip-form">
+          <Formik
+            validationSchema={validationSchemaRating}
+            initialValues={initialValueRating}
+            // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+            onSubmit={onAddRating}
+            render={props => {
+              return (
+                <Form>
+                  <div className="input-form">
+                    <label htmlFor="stars">Submit your rating: </label>
+                    <Field
+                      name="stars"
+                      type="number"
+                      id="stars"
+                      min="1"
+                      max="5"
+                    />
+                  </div>
+                  <div className="validation-field">
+                    <ErrorMessage name="stars" component="div" />
+                  </div>
+                  <button type="submit">Rate</button>
                 </Form>
               );
             }}
           />
         </div>
       </section>
-      {
-        tipSuccess ? (
-        <section className='tip-message'>
+      {tipSuccess ? (
+        <section className="tip-message">
           <h2>Thank you! You have tipped {selectedWorker.fullName}</h2>
         </section>
-      ) : null
-      }
+      ) : null}
 
       <section className="body-worker-card">
         <div className="img-container">
