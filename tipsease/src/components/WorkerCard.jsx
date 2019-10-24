@@ -143,7 +143,9 @@ function WorkerCard({
                   <div className="validation-field">
                     <ErrorMessage name="amount" component="div" />
                   </div>
-                  <button type="submit">Tip</button>
+                  <div className="button action small">
+                    <button type="submit">Tip</button>
+                  </div>
                 </Form>
               );
             }}
@@ -171,7 +173,9 @@ function WorkerCard({
                   <div className="validation-field">
                     <ErrorMessage name="stars" component="div" />
                   </div>
-                  <button type="submit">Rate</button>
+                  <div className="button action">
+                    <button type="submit">Rate</button>
+                  </div>
                 </Form>
               );
             }}

@@ -50,7 +50,10 @@ function WorkerListItem({ worker, arrayAvatars }) {
         <h4>{worker.rating}</h4>
         <h4>{worker.numOfRatings}</h4>
         <h4>{worker.accountBalance}</h4>
-        <h4 className="action-button-small">Click To Tip</h4>
+        <div className="button action small small-font">
+          <button>Click to Tip</button>
+        </div>
+        {/* <h4 className="action-button-small">Click To Tip</h4> */}
       </StyledLink>
     </div>
   );

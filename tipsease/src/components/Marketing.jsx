@@ -1,6 +1,6 @@
 import React from "react";
-import '../reset.css';
-import "../styles.css";
+// import '../reset.css';
+import "../App.css";
 import wallet from "../images/wallet.png";
 import car from "../images/car.png";
 import cash from "../images/cash-1.png";
@@ -30,7 +30,9 @@ export default function Marketing() {
         <section className="banner">
           <div className="banner-header">
             <h1>The Tipping App For A Cashless World</h1>
-            <button>Get Started</button>
+            <div className='button'>
+              <span>Get Started</span>
+            </div>
           </div>
           <div className="banner-item">
             <img src={homescreen} />
@@ -79,25 +81,25 @@ export default function Marketing() {
           </div>
           <div className="service-worker-content">
             <div className="service-worker-features">
-                <div>
-              <p>
-                <img className="feature-icons" src={wallet} /> Fast as paying
-                with cash from a wallet or money clip
-              </p>
-              <p>
-                <img className="feature-icons" src={car} /> It's easy to setup,
-                transact & administer for the Tipper & Tippee
-              </p>
+              <div>
+                <p>
+                  <img className="feature-icons" src={wallet} /> Fast as paying
+                  with cash from a wallet or money clip
+                </p>
+                <p>
+                  <img className="feature-icons" src={car} /> It's easy to
+                  setup, transact & administer for the Tipper & Tippee
+                </p>
 
+                <p>
+                  <img className="feature-icons" src={cash} /> It's secure as a
+                  paypal or credit card transaction
+                </p>
+              </div>
               <p>
-                <img className="feature-icons" src={cash} /> It's secure as a
-                paypal or credit card transaction
+                <img className="feature-icons" src={smartmoney} /> It's
+                anonymous and there's no need to know each other
               </p>
-            </div>
-            <p>
-              <img className="feature-icons" src={smartmoney} /> It's anonymous
-              and there's no need to know each other
-            </p>
             </div>
             <div>
               <img src={tipsimg} />
