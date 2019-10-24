@@ -132,13 +132,13 @@ table {
 
 /* END OF RESET */
 
-/* BOX SIZING EFFECT */
+/* START OF BOX SIZING EFFECT */
 
 * {
   box-sizing: border-box;
 }
 
-/* BOX SIZING EFFECT */
+/* END OF BOX SIZING EFFECT */
 
 .App {
   text-align: center;
@@ -173,11 +173,6 @@ table {
 .registration-form button {
   width: 50px;
   margin: auto;
-}
-
-h1 {
-  font-size: 4rem;
-  padding: 1rem;
 }
 
 h2 {
@@ -222,12 +217,13 @@ a {
 
 h1 {
 display: block;
-font-size: 3em;
+font-size: 4rem;
 margin-top: 0.67em;
 margin-bottom: 0.67em;
 margin-left: 0;
 margin-right: 0;
 font-weight: bold;
+padding: 1rem;
 }
 
 h3 {
@@ -287,7 +283,7 @@ padding-top: 90px;
 width: 50%;
 }
 
-.banner-header h1 {
+/* .banner-header h1 {
 display: block;
 font-size: 3em;
 margin-top: 0.67em;
@@ -298,14 +294,19 @@ font-weight: bold;
 width: 70%;
 line-height: 2;
 font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
-button {
-width: 30%;
-height: 42px;
-font-size: 19px;
-background: rgb(241, 241, 53);
+.button {
+width: 200px;
+height: 50px;
+font-size: 1.5rem;
+background: #F9A061;
 color: white;
+border-radius: 5px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
 }
 
 .service-workers {
@@ -317,7 +318,7 @@ flex-direction: column;
 .service-workers-heading {
 margin: 30px;
 text-align: center;
-font-family: Arial, Helvetica, sans-serif;
+/* font-family: Arial, Helvetica, sans-serif; */
 }
 
 .service-worker-content {
