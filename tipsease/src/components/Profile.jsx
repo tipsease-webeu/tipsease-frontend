@@ -7,32 +7,28 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 const StyledDiv = styled("div")`
-  .body-worker-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .greeting {
+    width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+  }
+  .body-worker-card {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 100%;
-    div {
-      width: 50%;
-    }
-
     .img-container {
       width: 20%;
     }
     img {
       width: 100%;
       border-radius: 100%;
-    }
-    .worker-details {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      height: 100%;
-      h3 {
-        margin: 1rem;
-      }
     }
   }
 `;
@@ -41,21 +37,25 @@ function Profile({ currentUser }) {
   return (
     <div>
       <StyledDiv>
-        <section>
-          <h2>Hello {currentUser.fullName},</h2>
+        <section className="greeting">
+          <h2>Hello <span style={{"border-bottom": "1px dashed gray" }}>{currentUser.fullName}</span>&nbsp;,</h2>
         </section>
         <section className="body-worker-card">
           <div className="img-container">
             <img src={currentUser.photoUrl} alt="current-user-profile-pic" />
-          {/* </div> */}
-          {/* <div className="worker-details"> */}
-            <h3>Full name:&nbsp; {currentUser.fullName}</h3>
-            <h3>Username:&nbsp; {currentUser.username}</h3>
           </div>
-          <Link to="/app/profile/edit">Edit profile</Link>
+          {/* <div className="worker-details"> */}
+          <h3>Full name:&nbsp; {currentUser.fullName}</h3>
+          <h3>Username:&nbsp; {currentUser.username}</h3>
+          {/* </div> */}
+          <Link to="/app/profile/edit" style={{ color: "white" }}>
+            <div className="button action">Edit profile</div>
+          </Link>
+        </section>
+        <section>
+          <Link to="/app/home">back</Link>
         </section>
       </StyledDiv>
-      <Link to="/app/home">back</Link>
     </div>
   );
 }
