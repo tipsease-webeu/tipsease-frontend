@@ -57,12 +57,12 @@ const StyledSection = styled.section`
   flex-direction: column;
   align-items: flex-start;
   width: 50%;
-  margin: 20px auto 0;
+  margin: 1rem auto 0;
   .input-group {
     display: flex;
     flex-direction: row;
     height: 75px;
-    margin-bottom: 20px;
+    margin-bottom: 0.2rem;
     align-items: center;
     width: 750px;
     label {
