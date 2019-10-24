@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-// HELPERS
+// STATE
 
-import { addDefaultSrc } from "../helpers/helpers";
+import { connect } from "react-redux";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function WorkerListItem({ worker }) {
+function WorkerListItem({ worker, arrayAvatars }) {
   return (
     <div>
       <StyledLink to={`/app/service-worker/${worker.id}`}>
@@ -31,10 +31,17 @@ export default function WorkerListItem({ worker }) {
           <img
             src={
               !worker.photoUrl
-                ? "http://saltlifetherapy.ie/wp-content/uploads/2018/11/no-photo-1.png"
+                ? arrayAvatars[
+                    Math.floor(Math.random() * Math.floor(arrayAvatars.length))
+                  ]
                 : worker.photoUrl
             }
-            onError={addDefaultSrc}
+            onError={e => {
+              e.target.src =
+                arrayAvatars[
+                  Math.floor(Math.random() * Math.floor(arrayAvatars.length))
+                ];
+            }}
             alt="profile-pic"
           />
         </div>
@@ -48,3 +55,5 @@ export default function WorkerListItem({ worker }) {
     </div>
   );
 }
+
+export default connect(state => state)(WorkerListItem);

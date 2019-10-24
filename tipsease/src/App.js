@@ -29,7 +29,8 @@ const masterReducer = combineReducers({
   loginError: reducers.loginErrorReducer,
   error: reducers.errorReducer,
   sorted: reducers.sortReducer,
-  ownTipHistory: reducers.ownTipHistoryReducer
+  ownTipHistory: reducers.ownTipHistoryReducer,
+  arrayAvatars: reducers.arrayAvatarsReducer
 });
 
 const store = createStore(
