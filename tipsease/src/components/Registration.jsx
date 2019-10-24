@@ -49,20 +49,17 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
   useEffect(() => {
     clearError();
   }, []);
-  const onRegFormSubmission = values => {
+
+  const onRegFormSubmission = (values, actions) => {
     axios
-      .post(userRegEndpoint, {
-        fullName: values.fullname,
-        username: values.username,
-        password: values.password,
-        photoUrl: values.photourl
-      })
+      .post(userRegEndpoint, values)
       .then(res => {
         setTaskSucceded();
       })
       .catch(error => {
-        alert(error.message);
+        alert(error.response.data.message);
       });
+      actions.resetForm();
   };
   return (
     <>
@@ -101,8 +98,8 @@ function Registration({ history, setTaskSucceded, tipSuccess, clearError }) {
               </label>
               <label>
                 Photo URL:
-                <Field name="photourl" type="text" />
-                <ErrorMessage name="photourl" component="div" />
+                <Field name="photoUrl" type="text" />
+                <ErrorMessage name="photoUrl" component="div" />
                 
               </label>
               <button type="submit">Sign Up</button>
