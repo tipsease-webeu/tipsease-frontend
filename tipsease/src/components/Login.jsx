@@ -19,7 +19,8 @@ const initialValuesLogin = {
   password: ""
 };
 
-const loginEndpoint = "https://build-tipsease.herokuapp.com/auth/users/login";
+const loginEndpoint =
+ "https://build-tipsease.herokuapp.com/auth/users/login";
 
 const validationSchema = yup.object().shape({
   username: yup

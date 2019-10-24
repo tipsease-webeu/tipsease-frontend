@@ -12,7 +12,6 @@ function Profile({ currentUser }) {
         <ul>
           <li>{currentUser.fullName}</li>
           <li>{currentUser.username}</li>
-          <li>{currentUser.photoUrl}</li>
           <div>
             <img src={currentUser.photoUrl} alt="current-user-profile-pic" />
           </div>
