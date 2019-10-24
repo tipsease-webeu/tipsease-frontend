@@ -143,8 +143,8 @@ function WorkerCard({
                   <div className="validation-field">
                     <ErrorMessage name="amount" component="div" />
                   </div>
-                  <div className='button action small' type="submit">
-                    <span>Tip</span>
+                  <div className="button action small" type="submit">
+                    <button type="submit">Tip</button>
                   </div>
                 </Form>
               );
@@ -173,7 +173,7 @@ function WorkerCard({
                   <div className="validation-field">
                     <ErrorMessage name="stars" component="div" />
                   </div>
-                  <div className='button action' type="submit">
+                  <div className="button action" type="submit">
                     <span>Rate</span>
                   </div>
                 </Form>
@@ -196,8 +196,7 @@ function WorkerCard({
                 ? arrayAvatars[
                     Math.floor(Math.random() * Math.floor(arrayAvatars.length))
                   ]
-                : selectedWorker
-                .photoUrl
+                : selectedWorker.photoUrl
             }
             onError={e => {
               e.target.src =
