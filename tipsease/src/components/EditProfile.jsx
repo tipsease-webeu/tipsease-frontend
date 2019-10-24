@@ -26,6 +26,7 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 1rem 0;
   .greeting {
     width: 100%;
     display: flex;
@@ -137,7 +138,9 @@ function Profile({ currentUser, onEditProfile, history }) {
                   </div>
                 </div>
               </StyledSection>
-              <button>Edit profile</button>
+              <div className="button action">
+                <button>Edit profile</button>
+              </div>
             </StyledForm>
           );
         }}
