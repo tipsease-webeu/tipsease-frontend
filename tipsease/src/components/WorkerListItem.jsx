@@ -29,7 +29,11 @@ export default function WorkerListItem({ worker }) {
       <StyledLink to={`/app/service-worker/${worker.id}`}>
         <div>
           <img
-            src={worker.photoUrl}
+            src={
+              !worker.photoUrl
+                ? "http://saltlifetherapy.ie/wp-content/uploads/2018/11/no-photo-1.png"
+                : worker.photoUrl
+            }
             onError={addDefaultSrc}
             alt="profile-pic"
           />

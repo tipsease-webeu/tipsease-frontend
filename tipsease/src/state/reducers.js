@@ -103,3 +103,14 @@ export function sortReducer(sorted = initialSorted, action) {
       return sorted;
   }
 }
+
+const initialOwnTipHistory = [];
+
+export function ownTipHistoryReducer(ownTipHistory = initialOwnTipHistory, action) {
+  switch(action.type) {
+    case types.ADD_TIP:
+      return [...ownTipHistory, action.payload];
+    default: 
+    return ownTipHistory;
+  }
+}

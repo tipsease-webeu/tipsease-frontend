@@ -68,6 +68,7 @@ const StyledCard = styled.div`
     div {
       width: 50%;
     }
+
     .img-container {
       width: 20%;
     }
@@ -185,7 +186,11 @@ function WorkerCard({
       <section className="body-worker-card">
         <div className="img-container">
           <img
-            src={selectedWorker.photoUrl}
+            src={
+              !selectedWorker.photoUrl
+                ? "http://saltlifetherapy.ie/wp-content/uploads/2018/11/no-photo-1.png"
+                : selectedWorker.photoUrl
+            }
             onError={addDefaultSrc}
             alt="profile-pic"
           />
