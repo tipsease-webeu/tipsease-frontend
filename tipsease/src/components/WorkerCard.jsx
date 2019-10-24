@@ -41,7 +41,7 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
-  .header-worker-card {
+  .actions-workers {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -49,11 +49,12 @@ const StyledCard = styled.div`
     margin: 2rem;
     border-bottom: 0.5px solid gray;
     padding: 2rem;
-    form {
+    .tip-form {
       display: flex;
       flex-direction: row;
       align-items: center;
       font-size: 1.5rem;
+      width: 50%;
       input {
         font-size: 1.5 rem;
       }
@@ -126,8 +127,10 @@ function WorkerCard({
   return (
     <>
       <StyledCard>
-        <section className="header-worker-card">
+        <section classeName="name-worker">
           <h2>{selectedWorker.fullName}</h2>
+        </section>
+        <section className="actions-workers">
           <div className="tip-form">
             <Formik
               validationSchema={validationSchemaTip}
@@ -144,7 +147,7 @@ function WorkerCard({
                     <div className="validation-field">
                       <ErrorMessage name="amount" component="div" />
                     </div>
-                    <div className="button action small">
+                    <div className="button action small round">
                       <button type="submit">Tip</button>
                     </div>
                   </Form>
@@ -173,6 +176,9 @@ function WorkerCard({
                     </div>
                     <div className="validation-field">
                       <ErrorMessage name="stars" component="div" />
+                    </div>
+                    <div className="button action small round">
+                      <button type="submit">Rate</button>
                     </div>
                   </Form>
                 );
