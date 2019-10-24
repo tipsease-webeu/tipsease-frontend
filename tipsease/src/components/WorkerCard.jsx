@@ -9,10 +9,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-// HELPERS
-
-import { addDefaultSrc } from "../helpers/helpers";
-
 const initialValueTip = {
   amount: 0
 };
