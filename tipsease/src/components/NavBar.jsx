@@ -20,8 +20,7 @@ const StyledNavBar = styled.nav`
   justify-content: space-around;
   align-items: center;
   a {
-    text-decoration: none;
-    color: black;
+    color: white;
   }
 `;
 
