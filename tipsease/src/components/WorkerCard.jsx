@@ -55,6 +55,14 @@ const StyledCard = styled.div`
       align-items: center;
       font-size: 1.5rem;
       width: 50%;
+      section {
+        display: flex;
+        flex-direction: column;
+        margin: 0 1rem;
+        * {
+          margin: 0.5rem 0;
+        }
+      }
       input {
         font-size: 1.5 rem;
       }
@@ -131,60 +139,54 @@ function WorkerCard({
           <h2>{selectedWorker.fullName}</h2>
         </section>
         <section className="actions-workers">
-          <div className="tip-form">
-            <Formik
-              validationSchema={validationSchemaTip}
-              initialValues={initialValueTip}
-              // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
-              onSubmit={onAddTip}
-              render={props => {
-                return (
-                  <Form>
-                    <div className="input-form">
-                      <label htmlFor="amount">Input amount in EUR: </label>
-                      <Field name="amount" type="number" id="amount" min="1" />
-                    </div>
-                    <div className="validation-field">
-                      <ErrorMessage name="amount" component="div" />
-                    </div>
-                    <div className="button action small round">
-                      <button type="submit">Tip</button>
-                    </div>
-                  </Form>
-                );
-              }}
-            />
-          </div>
-          <div className="tip-form">
-            <Formik
-              validationSchema={validationSchemaRating}
-              initialValues={initialValueRating}
-              // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
-              onSubmit={onAddRating}
-              render={props => {
-                return (
-                  <Form>
-                    <div className="input-form">
-                      <label htmlFor="stars">Submit your rating: </label>
-                      <Field
-                        name="stars"
-                        type="number"
-                        id="stars"
-                        min="1"
-                        max="5"
-                      />
-                    </div>
-                    <div className="validation-field">
-                      <ErrorMessage name="stars" component="div" />
-                    </div>
-                    <div className="button action small round">
-                      <button type="submit">Rate</button>
-                    </div>
-                  </Form>
-                );
-              }}
-            />
-          </div>
+          <Formik
+            validationSchema={validationSchemaTip}
+            initialValues={initialValueTip}
+            // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+            onSubmit={onAddTip}
+            render={props => {
+              return (
+                <Form className="tip-form">
+                  <section>
+                    <label htmlFor="amount">Input amount in EUR: </label>
+                    <Field name="amount" type="number" id="amount" min="1" />
+                    <ErrorMessage name="amount" component="div" />
+                  </section>
+                  <div className="button action small round">
+                    <button type="submit">Tip</button>
+                  </div>
+                </Form>
+              );
+            }}
+          />
+
+          <Formik
+            validationSchema={validationSchemaRating}
+            initialValues={initialValueRating}
+            // onSubmit={(e) => onSubmitTip(e, selectedWorker.id, currentUser.username)}
+            onSubmit={onAddRating}
+            render={props => {
+              return (
+                <Form className="tip-form">
+                  <section>
+                    <label htmlFor="stars">Submit your rating: </label>
+                    <Field
+                      name="stars"
+                      type="number"
+                      id="stars"
+                      min="1"
+                      max="5"
+                    />
+
+                    <ErrorMessage name="stars" component="div" />
+                  </section>
+                  <div className="button action small round">
+                    <button type="submit">Rate</button>
+                  </div>
+                </Form>
+              );
+            }}
+          />
         </section>
         {tipSuccess ? (
           <section className="tip-message">
