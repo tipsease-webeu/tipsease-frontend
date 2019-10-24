@@ -66,10 +66,12 @@ function Container({
 
   const sortScore = (field, type) => {
     const sortedArrayWorkers = listServiceWorkers.sort((a, b) => {
-      return parseInt(a[field]) - parseInt(b[field]);
+      // console.log(a[field]);
+      // console.log(b[field]);
+      return type === "asc" ? a[field] - b[field] : b[field] - a[field];
     });
-    // sortListWorkers(sortedArrayWorkers);
-    console.log(sortedArrayWorkers)
+    sortListWorkers(sortedArrayWorkers);
+    // console.log(sortedArrayWorkers);
   };
 
   return (
@@ -84,12 +86,12 @@ function Container({
         <button onClick={() => sortAlpha("fullName", "desc")}>
           Sort by name DESC
         </button>
-        {/* <button onClick={() => sortScore("rating", "asc")}>
+        <button onClick={() => sortScore("rating", "asc")}>
           Sort by rating score ASC
         </button>
         <button onClick={() => sortScore("rating", "desc")}>
           Sort by rating score DESC
-        </button> */}
+        </button>
       </section>
       <section>
         <section className="header-table">
