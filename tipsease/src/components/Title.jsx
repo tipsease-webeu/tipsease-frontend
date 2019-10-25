@@ -16,7 +16,7 @@ const StyledLink = styled(Link)`
 function Title({ currentUser }) {
   return (
     <div>
-      <StyledLink to="/" className={currentUser.id ? "white" : "blue"}>
+      <StyledLink to="/" className={currentUser.fullName ? "white" : "blue"}>
         <h1>Tipsease...</h1>
         <h3>I tip, you tip, everyone tips!</h3>
       </StyledLink>

@@ -13,7 +13,12 @@ export function countReducer(count = initialCount, action) {
   }
 }
 
-const initialUser = {};
+const initialUser = {
+  fullName: '',
+  username: '',
+  password: '',
+  photoUrl: '',
+};
 
 export function currentUserReducer(currentUser = initialUser, action) {
   switch (action.type) {

@@ -20,12 +20,11 @@ const StyledNavBar = styled.nav`
   justify-content: space-around;
   align-items: center;
   a {
-    text-decoration: none;
-    color: black;
+    color: white;
   }
 `;
 
-function NavBar({ history, clearCurrentUser, currentUser }) {
+function NavBar({ history, clearCurrentUser, currentUser, match }) {
   // LOGOUT FUNCTIONALITY
 
   const logout = e => {

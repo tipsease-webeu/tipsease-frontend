@@ -7,6 +7,8 @@ import cash from "../images/cash-1.png";
 import smartmoney from "../images/smartmoney.png";
 import tipsimg from "../images/tipsease-img1.png";
 import homescreen from "../images/home-screen.png";
+import homepage from "../images/homepage.png";
+import profilepage from "../images/profile-page.png";
 
 export default function Marketing() {
   return (
@@ -14,13 +16,12 @@ export default function Marketing() {
       <body>
         <section>
           <nav>
-            <h3 className="logo">
-              <a href="#">Tipsease</a>
-            </h3>
+            <h2 className="logo">Tipsease</h2>
             <ul className="nav-list">
               <li className="list-item">
                 <a href="/register">Register</a>
               </li>
+              <li className="list-item">|</li>
               <li className="list-item">
                 <a href="/login">Login</a>
               </li>
@@ -30,12 +31,12 @@ export default function Marketing() {
         <section className="banner">
           <div className="banner-header">
             <h1>The Tipping App For A Cashless World</h1>
-            <div className='button'>
+            <div className="button">
               <span>Get Started</span>
             </div>
           </div>
           <div className="banner-item">
-            <img src={homescreen} />
+            <img src={homescreen} alt='screenshots-app' />
           </div>
         </section>
         <section className="service-workers">
@@ -47,24 +48,24 @@ export default function Marketing() {
           </div>
           <div className="service-worker-content">
             <div>
-              <img src={tipsimg} />
+              <img src={tipsimg} alt='screenshots-app' />
             </div>
             <div className="service-worker-features">
               <p>
-                <img className="feature-icons" src={wallet} /> Never miss an
+                <img className="feature-icons" src={wallet} alt='screenshots-app' /> Never miss an
                 opportunity to get tipped
               </p>
               <p>
-                <img className="feature-icons" src={car} /> Get paid by anyone,
+                <img className="feature-icons" src={car} alt='screenshots-app' /> Get paid by anyone,
                 anywhere, anytime
               </p>
 
               <p>
-                <img className="feature-icons" src={cash} /> Get paid faster and
+                <img className="feature-icons" src={cash} alt='screenshots-app' /> Get paid faster and
                 more often
               </p>
               <p>
-                <img className="feature-icons" src={smartmoney} /> Earn Bonuses
+                <img className="feature-icons" src={smartmoney} alt='screenshots-app' /> Earn Bonuses
                 through our Referral Incentives
               </p>
             </div>
@@ -83,26 +84,26 @@ export default function Marketing() {
             <div className="service-worker-features">
               <div>
                 <p>
-                  <img className="feature-icons" src={wallet} /> Fast as paying
+                  <img className="feature-icons" src={wallet} alt='screenshots-app' /> Fast as paying
                   with cash from a wallet or money clip
                 </p>
                 <p>
-                  <img className="feature-icons" src={car} /> It's easy to
+                  <img className="feature-icons" src={car} alt='screenshots-app' /> It's easy to
                   setup, transact & administer for the Tipper & Tippee
                 </p>
 
                 <p>
-                  <img className="feature-icons" src={cash} /> It's secure as a
+                  <img className="feature-icons" src={cash} alt='screenshots-app' /> It's secure as a
                   paypal or credit card transaction
                 </p>
               </div>
               <p>
-                <img className="feature-icons" src={smartmoney} /> It's
+                <img className="feature-icons" src={smartmoney} alt='screenshots-app' /> It's
                 anonymous and there's no need to know each other
               </p>
             </div>
             <div>
-              <img src={tipsimg} />
+              <img src={tipsimg} alt='screenshots-app' />
             </div>
           </div>
         </section>
@@ -117,24 +118,24 @@ export default function Marketing() {
           </div>
           <div className="service-worker-content">
             <div>
-              <img src={tipsimg} />
+              <img src={tipsimg} alt='screenshots-app' />
             </div>
             <div className="service-worker-features">
               <p>
-                <img className="feature-icons" src={wallet} /> Never miss an
+                <img className="feature-icons" src={wallet} alt='screenshots-app' /> Never miss an
                 opportunity to get tipped
               </p>
               <p>
-                <img className="feature-icons" src={car} /> Get paid by anyone,
+                <img className="feature-icons" src={car} alt='screenshots-app' /> Get paid by anyone,
                 anywhere, anytime
               </p>
 
               <p>
-                <img className="feature-icons" src={cash} /> Get paid faster and
+                <img className="feature-icons" src={cash} alt='screenshots-app' /> Get paid faster and
                 more often
               </p>
               <p>
-                <img className="feature-icons" src={smartmoney} /> Earn Bonuses
+                <img className="feature-icons" src={smartmoney} alt='screenshots-app' /> Earn Bonuses
                 through our Referral Incentives
               </p>
             </div>

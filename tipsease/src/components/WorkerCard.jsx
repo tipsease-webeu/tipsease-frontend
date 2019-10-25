@@ -9,10 +9,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-// HELPERS
-
-import { addDefaultSrc } from "../helpers/helpers";
-
 const initialValueTip = {
   amount: 0
 };
@@ -40,20 +36,30 @@ const validationSchemaRating = yup.object().shape({
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  .header-worker-card {
+  margin: 1rem auto;
+  .actions-workers {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem;
+    /* margin: 2rem; */
     border-bottom: 0.5px solid gray;
     padding: 2rem;
-    form {
+    .tip-form {
       display: flex;
       flex-direction: row;
+      justify-content: center;
       align-items: center;
       font-size: 1.5rem;
+      width: 50%;
+      section {
+        display: flex;
+        flex-direction: column;
+        margin: 0 1rem;
+        * {
+          margin: 0.5rem 0;
+        }
+      }
       input {
         font-size: 1.5 rem;
       }
@@ -89,7 +95,7 @@ const StyledCard = styled.div`
   }
   .tip-message {
     color: red;
-    margin: 2rem;
+    /* margin: 2rem; */
     border-bottom: 1px solid gray;
     display: flex;
     flex-direction: row;
@@ -124,10 +130,12 @@ function WorkerCard({
   };
 
   return (
-    <StyledCard>
-      <section className="header-worker-card">
-        <h2>{selectedWorker.fullName}</h2>
-        <div className="tip-form">
+    <>
+      <StyledCard>
+        <section classeName="name-worker">
+          <h2>{selectedWorker.fullName}</h2>
+        </section>
+        <section className="actions-workers">
           <Formik
             validationSchema={validationSchemaTip}
             initialValues={initialValueTip}
@@ -135,23 +143,20 @@ function WorkerCard({
             onSubmit={onAddTip}
             render={props => {
               return (
-                <Form>
-                  <div className="input-form">
+                <Form className="tip-form">
+                  <section>
                     <label htmlFor="amount">Input amount in EUR: </label>
                     <Field name="amount" type="number" id="amount" min="1" />
-                  </div>
-                  <div className="validation-field">
-                    <ErrorMessage name="amount" component="div" />
-                  </div>
-                  <div className="button action small">
+                    <ErrorMessage name="amount" component="div" className='validation-message'/>
+                  </section>
+                  <div className="button action small round">
                     <button type="submit">Tip</button>
                   </div>
                 </Form>
               );
             }}
           />
-        </div>
-        <div className="tip-form">
+
           <Formik
             validationSchema={validationSchemaRating}
             initialValues={initialValueRating}
@@ -159,8 +164,8 @@ function WorkerCard({
             onSubmit={onAddRating}
             render={props => {
               return (
-                <Form>
-                  <div className="input-form">
+                <Form className="tip-form">
+                  <section>
                     <label htmlFor="stars">Submit your rating: </label>
                     <Field
                       name="stars"
@@ -169,57 +174,58 @@ function WorkerCard({
                       min="1"
                       max="5"
                     />
-                  </div>
-                  <div className="validation-field">
+
                     <ErrorMessage name="stars" component="div" />
-                  </div>
-                  <div className="button action">
+                  </section>
+                  <div className="button action small round">
                     <button type="submit">Rate</button>
                   </div>
                 </Form>
               );
             }}
           />
-        </div>
-      </section>
-      {tipSuccess ? (
-        <section className="tip-message">
-          <h2>Thank you! You have tipped {selectedWorker.fullName}</h2>
         </section>
-      ) : null}
+        {tipSuccess ? (
+          <section className="tip-message">
+            <h2>Thank you! You have tipped {selectedWorker.fullName}</h2>
+          </section>
+        ) : null}
 
-      <section className="body-worker-card">
-        <div className="img-container">
-          <img
-            src={
-              !selectedWorker.photoUrl
-                ? arrayAvatars[
+        <section className="body-worker-card">
+          <div className="img-container">
+            <img
+              src={
+                !selectedWorker.photoUrl
+                  ? arrayAvatars[
+                      Math.floor(
+                        Math.random() * Math.floor(arrayAvatars.length)
+                      )
+                    ]
+                  : selectedWorker.photoUrl
+              }
+              onError={e => {
+                e.target.src =
+                  arrayAvatars[
                     Math.floor(Math.random() * Math.floor(arrayAvatars.length))
-                  ]
-                : selectedWorker.photoUrl
-            }
-            onError={e => {
-              e.target.src =
-                arrayAvatars[
-                  Math.floor(Math.random() * Math.floor(arrayAvatars.length))
-                ];
-            }}
-            alt="profile-pic"
-          />
-        </div>
-        <div className="worker-details">
-          <h3>Workplace: {selectedWorker.workplace}</h3>
-          <h3>Rating: {selectedWorker.rating}</h3>
-          <h3># of ratings: {selectedWorker.numOfRatings}</h3>
-          <h3>Balance: {selectedWorker.accountBalance}</h3>
-        </div>
-      </section>
+                  ];
+              }}
+              alt="profile-pic"
+            />
+          </div>
+          <div className="worker-details">
+            <h3>Workplace: {selectedWorker.workplace}</h3>
+            <h3>Rating: {selectedWorker.rating}</h3>
+            <h3># of ratings: {selectedWorker.numOfRatings}</h3>
+            <h3>Balance: {selectedWorker.accountBalance}</h3>
+          </div>
+        </section>
+      </StyledCard>
       <section>
         <Link to="/app/home" onClick={() => resetTipSuccess()}>
           Back
         </Link>
       </section>
-    </StyledCard>
+    </>
   );
 }
 
